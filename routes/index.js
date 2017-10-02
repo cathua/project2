@@ -22,21 +22,23 @@ router.post('/login', function(req,res) {
   var password = req.body.password;
 
 
-  user.findOne({
-    username: username,
-
-    // hashed_password: password
+  db.user.findOne({
+    where: {
+      username: username,
+      // hashed_password: password
+    }
   })
   .then(user => {
     console.log('user.salt', user.salt);
+    console.log('password', password);
     let salt = user.salt;
-    var attemptedPassword = bcrpt.hashSync(password, salt);
-    let verify = bcrypt.compareSync(attemptedPassword, user.hashed_password); // return T or F
+    // var attemptedPassword = bcrypt.hashSync(req.body.password, salt);
+    let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
     if (!verify) {
-      log('wrong password');
+      console.log('wrong username or password');
     }
     else {
-      req.session.user = user;
+      // req.session.user = user;
       console.log('you did it!');
       res.redirect('/')
     }
