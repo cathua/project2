@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       associate: function(models) {
         // associations can be defined here
         meetup.belongsToMany('user', { through: 'userMeetup' })
+        meetup.hasOne('coffeeshop', { foreignKey: 'coffeeshop_id' })
       }
     }
   });

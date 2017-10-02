@@ -8,13 +8,12 @@ module.exports = function(sequelize, DataTypes) {
         f_name: DataTypes.STRING,
         l_name: DataTypes.STRING,
         username: DataTypes.STRING,
-        hashed_password: DataTypes.STRING
+        hashed_password: DataTypes.STRING,
         salt: DataTypes.STRING
-
     },
   {
-    tableName : 'user',
-    underscored: true
+    tableName : 'users',
+    underscored: false
   }, {
     classMethods: {
       associate: function(models) {
@@ -23,5 +22,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-    return User;
+    return user;
 };

@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var userMeetup = sequelize.define('userMeetup', {
-        user_id: type: DataTypes.INTEGER
+        user_id: DataTypes.INTEGER,
         meetup_id: DataTypes.INTEGER
 
     },
