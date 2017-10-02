@@ -1,0 +1,17 @@
+module.exports = function(sequelize, DataTypes) {
+    var userMeetup = sequelize.define('userMeetup', {
+        user_id: type: DataTypes.INTEGER
+        meetup_id: DataTypes.INTEGER
+
+    },
+  {
+    underscored: true
+  }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+      }
+    }
+  });
+    return userMeetup;
+};
