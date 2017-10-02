@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var User = sequelize.define('User', {
+    var user = sequelize.define('user', {
         userId: {
             autoincrement: true,
             primaryKey: true,
@@ -13,10 +13,15 @@ module.exports = function(sequelize, DataTypes) {
 
     },
   {
-    tableName : 'User',
+    tableName : 'user',
     underscored: true
-  }
-//associations go here afterwards
-);
+  }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+        user.belongsToMany('meetup', { through: 'userMeetup' })
+      }
+    }
+  });
     return User;
 };
