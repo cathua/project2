@@ -46,6 +46,7 @@ router.get('/login', function (req, res) {
 router.post('/login', function(req,res) {
   var username = req.body.username;
   var password = req.body.password;
+  // var id = req.body
 
 
   db.user.findOne({
@@ -55,8 +56,9 @@ router.post('/login', function(req,res) {
     }
   })
   .then(user => {
-    console.log('user.salt', user.salt);
-    console.log('password', password);
+    // console.log('user.salt', user.salt);
+    // console.log('password', password);
+    // console.log('user', user);
     let salt = user.salt;
     let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
     if (!verify) {
@@ -74,13 +76,19 @@ router.post('/login', function(req,res) {
       const token = jwt.sign(claims, process.env.JWT_SECRET, options);
 
       console.log('you did it!');
-      res.redirect('/')
+      // res.redirect('/users/:id')
+      res.json({ token: token });
     }
   })
   .catch(err => {
     console.log('Error: ', err);
     res.status(500).json(err);
   })
+})
+
+router.get('/users/:id', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
+  res.send('i work');
+
 })
 
 

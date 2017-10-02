@@ -8,10 +8,16 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
-if (config.use_env_variable) {
+if (!config.use_env_variable) {
+  console.log("im here")
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+  var sequelize = new Sequelize(config.database, config.username, config.password, {
+    "database": "coffee42_development",
+    "host": "127.0.0.1",
+    "use_env_variable": "JWT_SECRET",
+    "dialect": "postgres"
+  });
 }
 
 fs
