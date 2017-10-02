@@ -11,8 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.STRING
   }, {
     classMethods: {
-      associate: function(models) {
-        // associations can be defined here
+        coffeeshop.hasMany(models.meetup, { foreignKey: 'coffeeshop_id' })
       }
     }
   });
