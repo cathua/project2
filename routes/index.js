@@ -73,7 +73,8 @@ router.post('/login', function(req,res) {
         expiresIn: '1h'
       }
 
-      const token = jwt.sign(claims, process.env.JWT_SECRET, options);
+      var token = jwt.sign(claims, process.env.JWT_SECRET, options);
+      // localStorage.setItem('token', token);
 
       console.log('you did it!');
       // res.redirect('/users/:id')
@@ -85,11 +86,5 @@ router.post('/login', function(req,res) {
     res.status(500).json(err);
   })
 })
-
-router.get('/users/:id', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
-  res.send('i work');
-
-})
-
 
 module.exports = router;
