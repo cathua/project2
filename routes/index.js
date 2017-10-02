@@ -3,51 +3,15 @@ var db = require('../models');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
 var Sequelize = require('sequelize');
-// var salt = bcrypt.genSaltSync(10);
-// console.log('salt', salt);
+const jwt = require('jsonwebtoken');
+const jwtCheck = require('express-jwt');
+
+/* UNPROTECTED PAGES */
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
-/* GET login page. */
-router.get('/login', function (req, res) {
-  res.render('login');
-});
-
-/* Verify login. */
-router.post('/login', function(req,res) {
-  var username = req.body.username;
-  var password = req.body.password;
-
-
-  db.user.findOne({
-    where: {
-      username: username,
-      // hashed_password: password
-    }
-  })
-  .then(user => {
-    console.log('user.salt', user.salt);
-    console.log('password', password);
-    let salt = user.salt;
-    // var attemptedPassword = bcrypt.hashSync(req.body.password, salt);
-    let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
-    if (!verify) {
-      console.log('wrong username or password');
-    }
-    else {
-      // req.session.user = user;
-      console.log('you did it!');
-      res.redirect('/')
-    }
-  })
-  .catch(err => {
-    console.log('Error: ', err);
-    res.status(500).json(err);
-  })
-})
 
 /* GET sign-up page */
 router.get('/signup', function(req, res) {
@@ -66,6 +30,56 @@ router.post('/signup', function(req, res){
     salt: genSalt,
     created_at: Sequelize.NOW,
     updated_at: Sequelize.NOW
+  })
+})
+
+/* GET login page. */
+router.get('/login', function (req, res) {
+  res.render('login');
+});
+
+
+
+/* PROTECTED PAGES */
+
+/* Verify login. */
+router.post('/login', function(req,res) {
+  var username = req.body.username;
+  var password = req.body.password;
+
+
+  db.user.findOne({
+    where: {
+      username: username,
+      // hashed_password: password
+    }
+  })
+  .then(user => {
+    console.log('user.salt', user.salt);
+    console.log('password', password);
+    let salt = user.salt;
+    let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
+    if (!verify) {
+      console.log('wrong username or password');
+    }
+    else {
+      // req.session.user = user;
+      const claims = {
+        username: username
+      }
+      const options = {
+        expiresIn: '1h'
+      }
+
+      const token = jwt.sign(claims, process.env.JWT_SECRET, options);
+
+      console.log('you did it!');
+      res.redirect('/')
+    }
+  })
+  .catch(err => {
+    console.log('Error: ', err);
+    res.status(500).json(err);
   })
 })
 
