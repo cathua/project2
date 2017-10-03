@@ -121,3 +121,7 @@ li {
 .main-label {
   font-size: 2em;
 }
+
+#myModal1 {
+  z-index: 500;
+}
