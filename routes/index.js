@@ -74,7 +74,7 @@ router.post('/login', function(req,res) {
       }
 
       var token = jwt.sign(claims, process.env.JWT_SECRET, options);
-      // localStorage.setItem('token', token);
+      // window.localStorage.setItem('token', token);
 
       console.log('you did it!');
       // res.redirect('/users/:id')
