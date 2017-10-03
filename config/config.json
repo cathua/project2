@@ -2,6 +2,7 @@
   "development": {
     "database": "coffee42_development",
     "host": "127.0.0.1",
+    "use_env_variable": "JWT_SECRET",
     "dialect": "postgres"
   },
   "test": {

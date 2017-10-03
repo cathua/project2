@@ -56,9 +56,6 @@ router.post('/login', function(req,res) {
     }
   })
   .then(user => {
-    // console.log('user.salt', user.salt);
-    // console.log('password', password);
-    // console.log('user', user);
     let salt = user.salt;
     let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
     if (!verify) {
@@ -70,15 +67,16 @@ router.post('/login', function(req,res) {
         username: username
       }
       const options = {
-        expiresIn: '1h'
+        expiresIn: 3600
       }
 
       var token = jwt.sign(claims, process.env.JWT_SECRET, options);
       // window.localStorage.setItem('token', token);
 
       console.log('you did it!');
+      console.log('token', token);
       // res.redirect('/users/:id')
-      res.json({ token: token });
+      res.send('you\'ve logged in');
     }
   })
   .catch(err => {
