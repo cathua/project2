@@ -5,20 +5,20 @@ var bcrypt = require('bcryptjs');
 var Sequelize = require('sequelize');
 const jwt = require('jsonwebtoken');
 const jwtCheck = require('express-jwt');
-const jwtDecode = require('jwt-decode');
-
 
 /* ALL PROTECTED ROUTES */
 
 /* GET personal profile */
-router.get('/:id', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
+router.get('/', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
+  var token = req.headers.authorization.split(' ')[1];
+  var decoded = jwt.decode(token);
+  var id = decoded.payload.id;
   // let token = localStorage.getItem('token');
   // console.log('token', token);
   // res.send('i work');
-  db.user.findById(req.params.id)
-  .then(function(users) {
-    // if(req.params.username ===  )
-    res.status(200).json({users: users});
+  db.user.findById(id)
+  .then(function(user) {
+    res.status(200).json({user: user});
   })
 })
 
