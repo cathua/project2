@@ -3,6 +3,7 @@ var db = require('../models');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
 var Sequelize = require('sequelize');
+var rp = require('request-promise');
 const jwt = require('jsonwebtoken');
 const jwtCheck = require('express-jwt');
 
@@ -60,26 +61,35 @@ router.post('/login', function(req,res) {
     let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
     if (!verify) {
       console.log('wrong username or password');
+      res.redirect('/');
     }
     else {
       // req.session.user = user;
       const claims = {
-        username: username
+        username: username,
+        id: user.userId
       }
       const options = {
         expiresIn: 3600
       }
 
       var token = jwt.sign(claims, process.env.JWT_SECRET, options);
-      // window.localStorage.setItem('token', token);
 
-      console.log('you did it!');
-      console.log('token', token);
-      // res.redirect('/users/:id')
-      res.send('you\'ve logged in');
+      rp({
+        method: "GET",
+        uri: 'http://localhost:3000/users',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        json: true
+      })
+      .then(user => {
+        res.json(user);
+      })
     }
   })
   .catch(err => {
+    //render error page
     console.log('Error: ', err);
     res.status(500).json(err);
   })
