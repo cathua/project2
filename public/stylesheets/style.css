@@ -30,7 +30,7 @@ a {
 }
 
 header {
-  background-color: peru;
+  background-color: #8e5d2c;
   color: white;
   padding: 1rem;
   width: 100%;
@@ -108,7 +108,7 @@ li {
 }*/
 
 .content{
-  width: 60%;
+  width: 50%;
   text-align: center;
   margin: auto;
 }
@@ -122,6 +122,15 @@ li {
   font-size: 2em;
 }
 
-#myModal1 {
+#myModal1, #myModal2 {
   z-index: 500;
+}
+
+.auth-button {
+  border: 0px;
+  background-color: inherit;
+}
+
+.auth-button:hover {
+  background-color: #e3a530;
 }

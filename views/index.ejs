@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Coffee 42</title>
+    <title>Coffee 4&#183;2</title>
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -21,21 +21,20 @@
     <div class="header-container">
       <header id="main-nav" class="page-header clearfix">
         <div id="left">
-          <h1 class="logo"><a class='header-link' href="index.html"><span>Coffee 42</span> <i class="fa fa-coffee"></i></a></h1>
+          <h1 class="logo"><a class='header-link' href="index.html"><span>Coffee 4&#183;2</span> <i class="fa fa-coffee"></i></a></h1>
         </div>
         <div id="right">
-          <span class='nav-box'><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Login</button></span>
-          <span class='nav-box'><a class='header-link' href="/signup">Sign Up</a></span>
+          <span class='nav-box center-align valign-wrapper'><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button" data-toggle="modal" data-target="#myModal1">Login</button></span>
+          <span class='nav-box center-align valign-wrapper '><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button" data-toggle="modal" data-target="#myModal2">Sign Up!</button></span>
         </div>
       </header>
-      
+
       <div id="myModal1" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
           <!-- Modal content -->
           <div class="modal-content">
             <div class="modal-header">
-              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
               <h4 class="modal-title">Login</h4>
             </div>
             <form action="/login" method="POST">
@@ -53,6 +52,31 @@
           </div>
         </div>
 
+        <div id="myModal2" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Sign Up</h4>
+              </div>
+              <form action="/signup" method="POST">
+                <div class="modal-body">
+                  First Name: <input type="text" name="f_name" />
+                  Last Name: <input type="text" name="l_name" />
+                  Username: <input type="text" name="username" />
+                  Password: <input type="password" name="password" />
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-default">SUBMIT</button>
+                </div>
+                <form/>
+              </div>
+
+            </div>
+          </div>
+
       <div class="top-crop">
         <img class="header" src="http://localhost:3000/images/coffee42_mergedheader.jpg" alt="Pensive Coffee Beans">
       </div>
@@ -62,14 +86,14 @@
 
 
       <div class='content'>
-        <h1 class="title-header">Welcome to Coffee 4 2.</h1>
+        <h1 class="title-header">Welcome to Coffee 4&#183;2.</h1>
         <div class='content-1'>
           <h2 class="main-label">About Us</h2>
-          <p><i>Coffee 4 2</i> is an app created to help members of organizations get to know each other better. Developed by Catherine Hua and Mingquan Ma, this project is the product of a week-long capstone project for Unit 2 of Capital One's Developer Academy. This finished product is a fullstack CRUD web application that utilizes HTML/CSS in the front-end, and JavaScript in the back-end. Other components of the application include Node.js, Express, and Bcrypt. These are used for the CRUD functionality, authentication, and security components of the application, in addition to several other features. Feel free to explore this application to see what we've included!</p>
+          <p><i>Coffee 4&#183;2</i> is an app created to help members of organizations get to know each other better. Developed by Catherine Hua and Mingquan Ma, this project is the product of a week-long Unit 2 capstone project at Capital One's Developer Academy. This finished product is a fullstack CRUD web application that utilizes HTML/CSS in the front-end, and JavaScript in the back-end. Other components of the application include Node.js, Express, and Bcrypt. These are used for the CRUD functionality, authentication, and security components of the application, in addition to several other features. Feel free to explore this application to see what we've included!</p>
         </div>
         <div class='content-2'>
-          <h2 class="main-label">How does Coffee 4 2 Work?</h2>
-          <p><i>Coffee 4 2</i> is only available to registered users. After signing up, users are able to be paired with randomly selected individuals in their organization. Users will not be paired with people they were previously paired with, but upon being paired up, users can select a location to meet for coffee, and then submit feedback on their experience.</p>
+          <h2 class="main-label">How does Coffee 4&#183;2 Work?</h2>
+          <p><i>Coffee 4&#183;2</i> is only available to registered users. After signing up, users are able to be paired with randomly selected individuals in their organization. Users will not be paired with people they were previously paired with, but upon being paired up, users can select a location to meet for coffee, and then submit feedback on their experience.</p>
         </div>
       </div>
     </div>
