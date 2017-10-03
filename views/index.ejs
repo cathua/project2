@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Coffee 42</title>
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+
   </head>
   <body>
-    <h1>Welome to Coffee 42</h1>
-    <p>This is a test.</p>
-    <a href='#'>login</a> <a href='#'>sign-up</a>
+    <div class="container-content list-unstyled">
+
+    <header id="main-nav" class="page-header clearfix">
+      <div id="left">
+        <h1 class="logo"><a class='header-link' href="index.html"><span>Coffee 42</span> <i class="fa fa-coffee"></i></a></h1>
+      </div>
+      <div id="right">
+            <span class='nav-box'><a class='header-link' href="/login">Log In</a></span>
+            <span class='nav-box'><a class='header-link' href="/signup">Sign Up</a></span>
+      </div>
+      </header>
+      <div class="top-crop">
+        <img class="header" src="http://localhost:3000/images/coffee42_mergedheader.jpg" alt="Pensive Coffee Beans">
+        <!-- <img class="overlay" src="http://localhost:3000/images/Coffee42Logo03.png" alt="logo overlay"> -->
+      </div>
+
+    <div class='content'>
+      <h1 class="title-header">Welcome to Coffee 4 2.</h1>
+      <div class='content-1'>
+        <h2 class="main-label">About Us</h2>
+        <p><i>Coffee 4 2</i> is an app created to help members of organizations get to know each other better. Developed by Catherine Hua and Mingquan Ma, this project is the product of a week-long capstone project for Unit 2 of Capital One's Developer Academy. This finished product is a fullstack CRUD web application that utilizes HTML/CSS in the front-end, and JavaScript in the back-end. Other components of the application include Node.js, Express, and Bcrypt. These are used for the CRUD functionality, authentication, and security components of the application, in addition to several other features. Feel free to explore this application to see what we've included!</p>
+      </div>
+      <div class='content-2'>
+        <h2 class="main-label">How does Coffee 4 2 Work?</h2>
+        <p><i>Coffee 4 2</i> is only available to registered users. After signing up, users are able to be paired with randomly selected individuals in their organization. Users will not be paired with people they were previously paired with, but upon being paired up, users can select a location to meet for coffee, and then submit feedback on their experience.</p>
+      </div>
+    </div>
+
+
+
+    </div>
   </body>
 </html>
