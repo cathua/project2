@@ -11,7 +11,7 @@ const jwtCheck = require('express-jwt');
 /* GET all meetups */
 // jwtCheck({ secret: process.env.JWT_SECRET }),
 // unsecured for now!
-router.get('/', function(req, res) {
+router.get('/', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
   db.meetup.findAll()
   .then(meetups => {
     res.render('meetups', {meetups: meetups});
@@ -27,7 +27,7 @@ router.get('/:id', function (req, res) {
 })
 
 /* POST meetup */
-router.post('/:id', function(req, res) {
+router.post('/', function(req, res) {
   var coffeeshop_id = req.body.coffeeshop_id;
   var datetime = req.body.datetime;
   var accepted = false;

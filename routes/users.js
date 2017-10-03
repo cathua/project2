@@ -9,13 +9,9 @@ const jwtCheck = require('express-jwt');
 /* ALL PROTECTED ROUTES */
 
 /* GET personal profile */
-router.get('/', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
+router.get('/api', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
   var token = req.headers.authorization.split(' ')[1];
-  var decoded = jwt.decode(token);
-  var id = decoded.payload.id;
-  // let token = localStorage.getItem('token');
-  // console.log('token', token);
-  // res.send('i work');
+  var id= jwt.decode(token).id;
   db.user.findById(id)
   .then(function(user) {
     res.status(200).json({user: user});
@@ -23,7 +19,12 @@ router.get('/', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res)
 })
 
 /* EDIT personal profile */
-router.post('/:id', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
+router.get('/edit', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
+
+})
+
+/* EDIT personal profile */
+router.put('/edit', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
 
 })
 

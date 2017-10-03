@@ -61,7 +61,7 @@ router.post('/login', function(req,res) {
     let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
     if (!verify) {
       console.log('wrong username or password');
-      res.redirect('/');
+      res.redirect('/login');
     }
     else {
       // req.session.user = user;
@@ -77,7 +77,7 @@ router.post('/login', function(req,res) {
 
       rp({
         method: "GET",
-        uri: 'http://localhost:3000/users',
+        uri: 'http://localhost:3000/users/api',
         headers: {
           Authorization: `Bearer ${token}`
         },
