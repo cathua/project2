@@ -5,6 +5,7 @@ $(function() {
     $inputs.each(function() {
         values[this.name] = $(this).val();
     });
+    console.log(values);
     $.ajax({
       url:"http://localhost:3000/login",
       method: "POST",

@@ -45,15 +45,14 @@ router.get('/login', function (req, res) {
 
 /* Verify login. */
 router.post('/login', function(req,res) {
-  var username = req.body.username;
-  var password = req.body.password;
+  var username = req.body.login_username;
+  var password = req.body.login_password;
   // var id = req.body
 
 
   db.user.findOne({
     where: {
-      username: username,
-      // hashed_password: password
+      username: username
     }
   })
   .then(user => {
@@ -61,7 +60,7 @@ router.post('/login', function(req,res) {
     let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
     if (!verify) {
       console.log('wrong username or password');
-      res.redirect('/login');
+      res.redirect('/');
     }
     else {
       // req.session.user = user;
@@ -75,6 +74,9 @@ router.post('/login', function(req,res) {
 
       var token = jwt.sign(claims, process.env.JWT_SECRET, options);
 
+      // res.setHeader("Authorization", `Bearer ${token}`);
+      // res.redirect('/meetups');
+      console.log('still working');
       rp({
         method: "GET",
         uri: 'http://localhost:3000/users/api',
@@ -84,7 +86,7 @@ router.post('/login', function(req,res) {
         json: true
       })
       .then(user => {
-        res.json(user);
+        res.json({user: user});
       })
     }
   })
