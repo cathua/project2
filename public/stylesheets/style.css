@@ -89,11 +89,11 @@ li {
   width: 100%;
   opacity: 0.9;
   margin-top: -3%;
-  transform: scale(1.7);
+  transform: scale(1.6);
 }
 
 .top-crop {
-  max-height: 37em;
+  /*max-height: 37em;*/
   /*text-indent: 4.2em;*/
   overflow: hidden;
   position: relative;
