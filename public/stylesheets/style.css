@@ -85,15 +85,12 @@ li {
   justify-content: space-between;
 }
 
-.header {
-  width: 100%;
-  opacity: 0.9;
-  margin-top: -3%;
-  transform: scale(1.6);
-}
-
 .top-crop {
-  max-height: 37em;
+  background-image: url(http://localhost:3000/images/coffee42_mergedheader.jpg);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 37em;
   /*text-indent: 4.2em;*/
   overflow: hidden;
   position: relative;
@@ -126,4 +123,16 @@ li {
 
 .auth-button:hover {
   background-color: #e3a530;
+}
+
+.signup-error, .login-error {
+  background-color: red;
+  height: 2em;
+  margin-top: 2em;
+  text-align: center;
+}
+
+.error-message {
+  padding: 0.2em;
+  margin: 0 auto;
 }
