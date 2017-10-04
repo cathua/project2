@@ -38,6 +38,9 @@ router.post('/signup', function(req, res){
   })
 })
 
+router.get('/index_signin_error', function(req, res) {
+  res.render('/index_signin_error');
+})
 
 
 
@@ -61,7 +64,7 @@ router.post('/login', function(req,res) {
     let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
     if (!verify) {
       console.log('wrong username or password');
-      res.redirect('/');
+      res.render('/index_signin_error');
     }
     else {
       // req.session.user = user;
