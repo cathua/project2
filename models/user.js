@@ -13,12 +13,12 @@ module.exports = function(sequelize, DataTypes) {
     },
   {
     tableName : 'users',
-    underscored: false
+    underscored: true
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        user.belongsToMany('meetup', { through: 'userMeetup' })
+        // user.belongsToMany(models.meetup, { through: 'userMeetup' })
       }
     }
   });

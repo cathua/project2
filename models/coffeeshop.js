@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     rating: DataTypes.INTEGER,
     price: DataTypes.STRING
   }, {
+    underscored: true,
     classMethods: {
         // coffeeshop.hasMany(models.meetup, { foreignKey: 'coffeeshop_id' })
       }
