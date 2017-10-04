@@ -14,30 +14,31 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/* GET sign-up page */
-router.get('/signup', function(req, res) {
-  res.render('signup');
-  // this view doesn't exist yet lol
-})
-
 /* POST sign-up */
 router.post('/signup', function(req, res){
   var genSalt = bcrypt.genSaltSync(10);
-  db.user.create({
-    f_name: req.body.f_name,
-    l_name: req.body.l_name,
-    username: req.body.username,
-    hashed_password: bcrypt.hashSync(req.body.password, genSalt),
-    salt: genSalt,
-    created_at: Sequelize.NOW,
-    updated_at: Sequelize.NOW
+  db.user.findOne({
+    where: {
+      username: req.body.username
+    }
+  })
+  .then(function(user) {
+    if(!user) {
+      db.user.create({
+        f_name: req.body.f_name,
+        l_name: req.body.l_name,
+        username: req.body.username,
+        hashed_password: bcrypt.hashSync(req.body.password, genSalt),
+        salt: genSalt,
+        created_at: Sequelize.NOW,
+        updated_at: Sequelize.NOW
+      })
+    }
+    if (user) throw Error();
   })
 })
 
-/* GET login page. */
-router.get('/login', function (req, res) {
-  res.render('login');
-});
+
 
 
 
