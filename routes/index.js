@@ -8,6 +8,7 @@ var striptags = require('striptags');
 
 const ensureLoggedIn = (req, res, next) => {
   if (!req.session || !req.session.user) {
+    console.log('req.session: ', req.session);
     res.redirect('/login');
   } else {
     next();

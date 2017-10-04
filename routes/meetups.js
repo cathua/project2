@@ -8,7 +8,8 @@ const jwtCheck = require('express-jwt');
 
 const ensureLoggedIn = (req, res, next) => {
   if (!req.session || !req.session.user) {
-    res.redirect('/login');
+    console.log('req.session: ', req.session);
+    res.redirect('/');
   } else {
     next();
   }
@@ -17,12 +18,8 @@ const ensureLoggedIn = (req, res, next) => {
 /* ALL PROTECTED PAGES */
 
 /* GET all meetups */
-// ensureLoggedIn
-// unsecured for now!
 router.get('/', ensureLoggedIn, function(req, res) {
-  var token = req.headers.authorization.split(' ')[1];
-  var id= jwt.decode(token).id;
-  db.user.findById(id)
+  db.user.findById(req.session.user.userId)
   .then(function(user) {
     user.getMeetups()
     .then(meetups => {
