@@ -45,8 +45,8 @@ router.get('/login', function (req, res) {
 
 /* Verify login. */
 router.post('/login', function(req,res) {
-  var username = req.body.login_username;
-  var password = req.body.login_password;
+  var username = req.body.username;
+  var password = req.body.password;
   // var id = req.body
 
 
@@ -73,21 +73,21 @@ router.post('/login', function(req,res) {
       }
 
       var token = jwt.sign(claims, process.env.JWT_SECRET, options);
+      res.json({user: claims, token: token});
 
       // res.setHeader("Authorization", `Bearer ${token}`);
       // res.redirect('/meetups');
-      console.log('still working');
-      rp({
-        method: "GET",
-        uri: 'http://localhost:3000/users/api',
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-        json: true
-      })
-      .then(user => {
-        res.json({user: user});
-      })
+      // rp({
+      //   method: "GET",
+      //   uri: 'http://localhost:3000/users/api',
+      //   headers: {
+      //     Authorization: `Bearer ${token}`
+      //   },
+      //   json: true
+      // })
+      // .then(user => {
+      //   res.json({user: user});
+      // })
     }
   })
   .catch(err => {
