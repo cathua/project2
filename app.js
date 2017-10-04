@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Cookie handler
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  cookie: { maxAge: 3600},
+  cookie: { maxAge: 3600000},
   resave: false,
   saveUnitialized: false
 }))
