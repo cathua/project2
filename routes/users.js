@@ -24,10 +24,14 @@ router.get('/', ensureLoggedIn, function(req, res) {
   })
 })
 
-/* EDIT personal profile */
+/* GET edit profile */
 router.get('/edit', ensureLoggedIn, function(req, res) {
-
-})
+  db.user.findById(req.session.user.userId, {
+    attributes: ['userId', 'f_name', 'l_name', 'username']
+  })
+  .then(function(user) {
+    res.render('edit', {user: user});
+  })})
 
 /* EDIT personal profile */
 router.put('/edit', ensureLoggedIn, function(req, res) {
