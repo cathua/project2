@@ -10,6 +10,8 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var meetups = require('./routes/meetups');
+//temporary! please delete later.
+var users = require('./routes/users');
 
 var app = express();
 
@@ -28,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/meetups', meetups);
+//temporary! please delete later.
+app.use('/users', users)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,23 @@
+.profile {
+  color: white;
+}
+
+#left {
+  width: 75%;
+}
+
+#right {
+  width: 25%;
+}
+
+#profile-link {
+  width: 60%;
+}
+
+#logout {
+  width: 40%
+}
+
+/*.auth-button{
+  height: 100%;
+}*/
