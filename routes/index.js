@@ -50,8 +50,8 @@ router.post('/signup', function(req, res){
 })
 
 /* GET error page when you mess up the login */
-router.get('/index_signin_error', function(req, res) {
-  res.render('index_signin_error');
+router.get('/index_login_error', function(req, res) {
+  res.render('index_login_error');
 })
 
 /* GET error page when you have duplicate usernames */
@@ -81,7 +81,7 @@ router.post('/login', function(req,res) {
     let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
     if (!verify) {
       console.log('wrong username or password');
-      res.redirect('/index_signin_error');
+      res.redirect('/index_login_error');
     }
     else {
       req.session.user = user;
