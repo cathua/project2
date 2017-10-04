@@ -45,15 +45,14 @@ router.get('/login', function (req, res) {
 
 /* Verify login. */
 router.post('/login', function(req,res) {
-  var username = req.body.username;
-  var password = req.body.password;
+  var username = req.body.login_username;
+  var password = req.body.login_password;
   // var id = req.body
 
 
   db.user.findOne({
     where: {
-      username: username,
-      // hashed_password: password
+      username: username
     }
   })
   .then(user => {
