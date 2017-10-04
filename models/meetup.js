@@ -5,11 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     accepted: DataTypes.BOOLEAN,
     coffeeshop_id: DataTypes.INTEGER
   }, {
+    underscored: true,
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        meetup.belongsToMany('user', { through: 'userMeetup' })
-        meetup.hasOne('coffeeshop', { foreignKey: 'coffeeshop_id' })
+        // meetup.belongsToMany(db.user, { through: 'userMeetup' })
+        // meetup.hasOne('coffeeshop', { foreignKey: 'coffeeshop_id' })
       }
     }
   });

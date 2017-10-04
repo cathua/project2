@@ -37,9 +37,7 @@ router.post('/signup', function(req, res){
         l_name: req.body.l_name,
         username: req.body.username,
         hashed_password: bcrypt.hashSync(req.body.password, genSalt),
-        salt: genSalt,
-        created_at: Sequelize.NOW,
-        updated_at: Sequelize.NOW
+        salt: genSalt
       })
     }
     if (user) {

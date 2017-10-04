@@ -19,13 +19,17 @@ const ensureLoggedIn = (req, res, next) => {
 
 /* GET all meetups */
 router.get('/', ensureLoggedIn, function(req, res) {
-  db.user.findById(req.session.user.userId)
+  db.user.findById(req.session.user.userId, {
+    include: {
+      model: db.meetup
+    }
+  })
   .then(function(user) {
-    user.getMeetups()
-    .then(meetups => {
+    // user.getMeetups()
+    // .then(meetups => {
       //create an array to store all the meetups with appended users and location
       var meetupsWithUsers = [];
-      meetups.forEach(meetup => {
+      user.meetups.forEach(meetup => {
         var meetupWithUsers = {};
         meetupWithUsers.datetime = meetup.datetime;
         meetupWithUsers.accepted = meetup.accepted;
@@ -47,7 +51,7 @@ router.get('/', ensureLoggedIn, function(req, res) {
       res.render("meetups", {meetups: meetupsWithUsers});
     })
   })
-})
+// })
 
 /* GET meetup by id */
 router.get('/:id', function (req, res) {
