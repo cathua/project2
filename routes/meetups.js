@@ -6,22 +6,38 @@ var Sequelize = require('sequelize');
 const jwt = require('jsonwebtoken');
 const jwtCheck = require('express-jwt');
 
+const ensureLoggedIn = (req, res, next) => {
+  if (!req.session || !req.session.user) {
+    res.redirect('/login');
+  } else {
+    next();
+  }
+}
+
 /* ALL PROTECTED PAGES */
 
 /* GET all meetups */
-// jwtCheck({ secret: process.env.JWT_SECRET }),
+// ensureLoggedIn
 // unsecured for now!
-router.get('/', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
+router.get('/', ensureLoggedIn, function(req, res) {
   var token = req.headers.authorization.split(' ')[1];
   var id= jwt.decode(token).id;
   db.user.findById(id)
   .then(function(user) {
-    res.status(200).json({user: user});
+    user.getMeetups()
+    .then(meetups => {
+      var meetupsWithUsers = [];
+      meetups.forEach(meetup => {
+        meetup.getUsers()
+        .then(usersInMeetup => {
+          usersInMeetup.forEach(userInMeetup => {
+
+          })
+        })
+      })
+      res.render("meetups", {meetups: meetups});
+    })
   })
-  // db.meetup.findAll()
-  // .then(meetups => {
-  //   res.render('meetups', {meetups: meetups});
-  // })
 })
 
 /* GET meetup by id */

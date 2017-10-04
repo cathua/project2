@@ -4,8 +4,15 @@ var router = express.Router();
 var bcrypt = require('bcryptjs');
 var Sequelize = require('sequelize');
 var rp = require('request-promise');
-const jwt = require('jsonwebtoken');
-const jwtCheck = require('express-jwt');
+var striptags = require('striptags');
+
+const ensureLoggedIn = (req, res, next) => {
+  if (!req.session || !req.session.user) {
+    res.redirect('/login');
+  } else {
+    next();
+  }
+}
 
 /* UNPROTECTED PAGES */
 
@@ -49,10 +56,8 @@ router.get('/index_signin_error', function(req, res) {
 
 /* Verify login. */
 router.post('/login', function(req,res) {
-  var username = req.body.username;
-  var password = req.body.password;
-  // var id = req.body
-
+  const username = striptags(req.body.username.trim());
+  const password = striptags(req.body.password.trim());
 
   db.user.findOne({
     where: {
@@ -60,38 +65,17 @@ router.post('/login', function(req,res) {
     }
   })
   .then(user => {
+    if (!user) {
+      res.render('/index_signin_error');
+    }
     let salt = user.salt;
     let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
     if (!verify) {
-      console.log('wrong username or password');
       res.render('/index_signin_error');
     }
     else {
-      // req.session.user = user;
-      const claims = {
-        username: username,
-        id: user.userId
-      }
-      const options = {
-        expiresIn: 3600
-      }
-
-      var token = jwt.sign(claims, process.env.JWT_SECRET, options);
-      res.json({user: claims, token: token});
-
-      // res.setHeader("Authorization", `Bearer ${token}`);
-      // res.redirect('/meetups');
-      // rp({
-      //   method: "GET",
-      //   uri: 'http://localhost:3000/users/api',
-      //   headers: {
-      //     Authorization: `Bearer ${token}`
-      //   },
-      //   json: true
-      // })
-      // .then(user => {
-      //   res.json({user: user});
-      // })
+      req.session.user = user;
+      res.redirect('/users');
     }
   })
   .catch(err => {

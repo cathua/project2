@@ -3,28 +3,34 @@ var db = require('../models');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
 var Sequelize = require('sequelize');
-const jwt = require('jsonwebtoken');
-const jwtCheck = require('express-jwt');
+
+const ensureLoggedIn = (req, res, next) => {
+  if (!req.session || !req.session.user) {
+    res.redirect('/login');
+  } else {
+    next();
+  }
+}
 
 /* ALL PROTECTED ROUTES */
 
 /* GET personal profile */
-router.get('/api', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
-  var token = req.headers.authorization.split(' ')[1];
-  var id= jwt.decode(token).id;
-  db.user.findById(id)
+router.get('/', ensureLoggedIn, function(req, res) {
+  db.user.findById(req.session.user.userId, {
+    attributes: ['userId', 'f_name', 'l_name', 'username']
+  })
   .then(function(user) {
-    res.status(200).json({user: user});
+    res.render("users",{user: user});
   })
 })
 
 /* EDIT personal profile */
-router.get('/edit', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
+router.get('/edit', ensureLoggedIn, function(req, res) {
 
 })
 
 /* EDIT personal profile */
-router.put('/edit', jwtCheck({ secret: process.env.JWT_SECRET }), function(req, res) {
+router.put('/edit', ensureLoggedIn, function(req, res) {
 
 })
 
