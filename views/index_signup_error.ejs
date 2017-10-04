@@ -22,7 +22,7 @@
           <h1 class="logo"><a class='header-link' href="/"><span>Coffee 4&#183;2</span> <i class="fa fa-coffee"></i></a></h1>
         </div>
         <div id="right">
-          <span class='nav-box center-align valign-wrapper'><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button" data-toggle="modal" data-target="#myModal1">Login</button></span>
+          <span class='nav-box center-align  '><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button" data-toggle="modal" data-target="#myModal1">Login</button></span>
           <span class='nav-box center-align valign-wrapper '><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button" data-toggle="modal" data-target="#myModal2">Sign Up!</button></span>
         </div>
       </header>
@@ -35,8 +35,33 @@
             <div class="modal-header">
               <h4 class="modal-title">Login</h4>
             </div>
-            <form action="/" method="POST" id="login">
+            <form action="/login" method="POST" id="login">
               <div class="modal-body">
+                Username: <input type="text" name="username" />
+                Password: <input type="password" name="password" />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-default">SUBMIT</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="myModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Sign Up</h4>
+            </div>
+            <form action="/signup" method="POST" id="signup">
+              <div class="modal-body">
+                First Name: <input type="text" name="f_name" />
+                Last Name: <input type="text" name="l_name" />
                 Username: <input type="text" name="username" />
                 Password: <input type="password" name="password" />
               </div>
@@ -50,42 +75,12 @@
           </div>
         </div>
 
-        <div id="myModal2" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Sign Up</h4>
-              </div>
-              <form action="/" method="POST" id="signup">
-                <div class="modal-body">
-                  First Name: <input type="text" name="f_name" />
-                  Last Name: <input type="text" name="l_name" />
-                  Username: <input type="text" name="username" />
-                  Password: <input type="password" name="password" />
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-default">SUBMIT</button>
-                </div>
-              </form>
-              </div>
-
-            </div>
+        <div class="top-crop">
+          <div class="valign-wrapper signup-error">
+            <p class="error-message"><b>ERROR:</b> That username already exists. Please try again!</p>
           </div>
+        </div>
 
-          <div class="top-crop">
-            <div class="signup-error">
-              <p><b>ERROR:</b> That username already exists. Please try again!</p>
-            </div>
-            <img class="header" src="http://localhost:3000/images/coffee42_mergedheader.jpg" alt="Pensive Coffee Beans">
-          </div>
-
-
-      <div class="top-crop">
-        <img class="header" src="http://localhost:3000/images/coffee42_mergedheader.jpg" alt="Pensive Coffee Beans">
-      </div>
 
 
 

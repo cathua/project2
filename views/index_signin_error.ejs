@@ -36,7 +36,7 @@
             <div class="modal-header">
               <h4 class="modal-title">Login</h4>
             </div>
-            <form action="/" method="POST" id="login">
+            <form action="/login" method="POST" id="login">
               <div class="modal-body">
                 Username: <input type="text" name="username" />
                 Password: <input type="password" name="password" />
@@ -59,7 +59,7 @@
               <div class="modal-header">
                 <h4 class="modal-title">Sign Up</h4>
               </div>
-              <form action="/" method="POST" id="signup">
+              <form action="/signup" method="POST" id="signup">
                 <div class="modal-body">
                   First Name: <input type="text" name="f_name" />
                   Last Name: <input type="text" name="l_name" />
@@ -77,10 +77,9 @@
           </div>
 
       <div class="top-crop">
-        <div class="login-error">
-          <p><b>ERROR:</b> Incorrect username or password. Please try again!</p>
+        <div class="valign-wrapper login-error">
+          <p class="error-message"><b>ERROR:</b> Incorrect username or password. Please try again!</p>
         </div>
-        <img class="header" src="http://localhost:3000/images/coffee42_mergedheader.jpg" alt="Pensive Coffee Beans">
       </div>
 
 
