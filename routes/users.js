@@ -7,7 +7,7 @@ var Sequelize = require('sequelize');
 const ensureLoggedIn = (req, res, next) => {
   if (!req.session || !req.session.user) {
     console.log('req.session: ', req.session);
-    console.log('req.session.user: ', req.session.user);
+    console.log('req.session: ', req.session);
     res.redirect('/');
   } else {
     next();

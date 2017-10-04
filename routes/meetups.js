@@ -23,16 +23,28 @@ router.get('/', ensureLoggedIn, function(req, res) {
   .then(function(user) {
     user.getMeetups()
     .then(meetups => {
+      //create an array to store all the meetups with appended users and location
       var meetupsWithUsers = [];
       meetups.forEach(meetup => {
+        var meetupWithUsers = {};
+        meetupWithUsers.datetime = meetup.datetime;
+        meetupWithUsers.accepted = meetup.accepted;
+
+        //get the location from coffeeshop_id
+        meetup.getCoffeeshop()
+        .then(coffeeshop => {
+          meetupWithUsers.name = coffeeshop.name;
+        });
         meetup.getUsers()
         .then(usersInMeetup => {
           usersInMeetup.forEach(userInMeetup => {
-
+            if (usersInMeetup.userId !== req.session.user.userId) {
+              meetupWithUsers.personToMeet = usersInMeetup.f_name;
+            }
           })
         })
       })
-      res.render("meetups", {meetups: meetups});
+      res.render("meetups", {meetups: meetupsWithUsers});
     })
   })
 })
