@@ -93,7 +93,7 @@ li {
 }
 
 .top-crop {
-  /*max-height: 37em;*/
+  max-height: 37em;
   /*text-indent: 4.2em;*/
   overflow: hidden;
   position: relative;
