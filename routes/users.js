@@ -18,8 +18,8 @@ const ensureLoggedIn = (req, res, next) => {
 
 /* GET personal profile */
 router.get('/', ensureLoggedIn, function(req, res) {
-  db.user.findById(req.session.user.userId, {
-    attributes: ['userId', 'f_name', 'l_name', 'username']
+  db.user.findById(req.session.user.id, {
+    attributes: ['id', 'f_name', 'l_name', 'username']
   })
   .then(function(user) {
     res.render("users",{user: user});
@@ -29,8 +29,8 @@ router.get('/', ensureLoggedIn, function(req, res) {
 /* GET edit profile */
 router.get('/edit', ensureLoggedIn, function(req, res) {
   console.log("getTest")
-  db.user.findById(req.session.user.userId, {
-    attributes: ['userId', 'f_name', 'l_name', 'username']
+  db.user.findById(req.session.user.id, {
+    attributes: ['id', 'f_name', 'l_name', 'username']
   })
   .then(function(user) {
     res.render('edit', {user: user});
@@ -39,8 +39,8 @@ router.get('/edit', ensureLoggedIn, function(req, res) {
 /* EDIT personal profile */
 router.put('/edit', ensureLoggedIn, function(req, res) {
   console.log("puttest");
-  db.user.findById(req.session.user.userId, {
-    attributes: ['userId', 'f_name', 'l_name', 'username']
+  db.user.findById(req.session.user.id, {
+    attributes: ['id', 'f_name', 'l_name', 'username']
   })
   .then(function(user) {
     // console.log('req.body', req.body);
