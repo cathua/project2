@@ -107,7 +107,7 @@ router.post('/', function(req, res) {
       });
       db.userMeetup.create({
         //Meetup for Random user!
-        user_id: Math.floor(Math.random() * max),
+        user_id: 1 + Math.floor(Math.random() * (max-1)),
         meetup_id: meetup.id
       });
     })
