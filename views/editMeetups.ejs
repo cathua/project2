@@ -12,10 +12,7 @@
     <link rel='stylesheet' href='/stylesheets/users.css' />
 
 
-    <script src="//code.jquery.com/jquery.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
+
 
 
   </head>
@@ -59,7 +56,7 @@
             <div class='content-1'>
               <h2 class="main-label">Here's the information on your meetup. Feel free to change what you need.</h2>
               <div class="row">
-                <form action="/meetups/?_method=PUT" method="post">
+                <form action="/meetups/<%=meetup.id%>?_method=PUT" method="post">
                   <div class="col s12">
                     This meetup is with <%= meetup.personToMeet %> <%= meetup.personToMeetLname %>.
                     <br />
@@ -91,6 +88,9 @@
                 </div>
               </div>
             </div>
-
+            <script src="//code.jquery.com/jquery.js"></script>
+            <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
+            <script type="text/javascript" src="/js/main.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       </body>
 </html>

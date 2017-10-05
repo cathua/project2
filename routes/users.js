@@ -37,7 +37,7 @@ router.get('/edit', ensureLoggedIn, function(req, res) {
   })})
 
 /* EDIT personal profile */
-router.put('/edit', ensureLoggedIn, function(req, res) {
+router.put('/:id', ensureLoggedIn, function(req, res) {
   console.log("puttest");
   db.user.findById(req.session.user.id, {
     attributes: ['id', 'f_name', 'l_name', 'username']
@@ -54,11 +54,6 @@ router.put('/edit', ensureLoggedIn, function(req, res) {
     })
   })
 })
-
-// router.post('/edit', ensureLoggedIn, function(req, res) {
-//   console.log("posttest");
-//   console.log('req.body', req.session);
-// })
 
 
 module.exports = router;

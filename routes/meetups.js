@@ -50,7 +50,7 @@ router.get('/', ensureLoggedIn, function(req, res) {
     return Promise.all(meetupsWithUsers);
   })
   .then(function(meetupsWithUsers) {
-    console.log("meetupsWithUsers: ", meetupsWithUsers);
+    // console.log("meetupsWithUsers: ", meetupsWithUsers);
     res.render("meetups", {meetups: meetupsWithUsers});
   })
 })
@@ -70,6 +70,7 @@ router.get('/:id/edit', function (req, res) {
     .spread((coffeeshop, users, all_shops) => {
       m = {};
       m.name = coffeeshop.name;
+      m.id = meetup.id;
       m.personToMeet = (users[0].id === req.session.user.id) ? users[1].f_name : users[0].f_name;
       m.personToMeetLname = (users[0].id === req.session.user.id) ? users[1].l_name : users[0].l_name;
       m.date = meetup.datetime.split(" ")[0];
@@ -88,11 +89,11 @@ router.get('/:id/edit', function (req, res) {
 
 /* POST meetup */
 router.post('/', function(req, res) {
-
+  console.log('i am posting');
   db.meetup.create({
-    datetime: req.body.datetime,
+    datetime: Sequelize.NOW,
     accepted: false,
-    coffeeshop_id: req.body.coffeeshop_id,
+    coffeeshop_id: 1,
     created_at: Sequelize.NOW,
     updated_at: Sequelize.NOW
   })
@@ -117,7 +118,26 @@ router.post('/', function(req, res) {
 
 /* PUT meetup by id */
 router.put('/:id', function(req, res) {
-  // code to come
+  console.log("puttest");
+  db.coffeeshop.find({
+    where: {name: req.body.name}
+  })
+  .then(coffeeshop => {
+
+  })
+  db.meetup.findById(req.params.id, {
+    attributes: ['id', 'name', 'datetime']
+  })
+  .then(function(meetup) {
+    // console.log('req.body', req.body);
+    meetup.updateAttributes({
+      name: req.body.name,
+      datetime: req.body.date + " " + req.body.time
+    })
+    .then(function(meetups) {
+      res.redirect('/meetups');
+    })
+  })
 })
 
 module.exports = router;

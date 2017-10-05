@@ -113,7 +113,14 @@
                     </div>
                     <div class="card-action">
                       <!-- gotta get the edit link, and make the edit route -->
-                      <a class='edit-link' href="/meetups/<%= meetup.id %>/edit">Edit Link</a>
+                      <a class='edit-link' href="/meetups/<%= meetup.id %>/edit">Edit</a>
+                      <form action='/meetups' method="PUT">
+                        <!-- FIX THIS -->
+                        <a class='edit-link' href="/meetups">Accept</a>
+                      </form>
+                      <form action='/meetups' method="DELETE">
+                        <a class='edit-link' href='/meetups'>Delete</a>
+                      </form>
                     </div>
                   </div>
                 </div>
