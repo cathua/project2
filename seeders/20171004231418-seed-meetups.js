@@ -3,13 +3,13 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('meetups', [{
-      datetime: '2017-10-3 17:00:00',
+      datetime: "10-3-2017 10:38:01",
       accepted: false,
       coffeeshop_id: 1,
       created_at: new Date(),
       updated_at: new Date()
     }, {
-      datetime: '2017-4-20 16:20:20',
+      datetime: "10-4-2017 4:20:20",
       accepted: false,
       coffeeshop_id: 2,
       created_at: new Date(),
