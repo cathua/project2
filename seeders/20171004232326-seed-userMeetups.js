@@ -22,7 +22,7 @@ module.exports = {
       meetup_id: 2,
       created_at: new Date(),
       updated_at: new Date()
-    }], {});
+    }]);
   },
 
   down: (queryInterface, Sequelize) => {

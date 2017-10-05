@@ -37,7 +37,7 @@ module.exports = {
       salt: '$2a$10$JA5H/8zM/v2LZb97pcCzMu',
       created_at: new Date(),
       updated_at: new Date()
-    }], {});
+    }]);
   },
 
   down: (queryInterface, Sequelize) => {

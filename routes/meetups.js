@@ -90,22 +90,22 @@ router.get('/:id/edit', function (req, res) {
 /* POST meetup */
 router.post('/', function(req, res) {
   console.log('i am posting');
+  var date = new Date();
+  console.log(date);
   db.meetup.create({
-    datetime: "07/30/1995 4:20pm",
+    datetime: date.toString(),
     accepted: false,
-    coffeeshop_id: 1,
-    created_at: Sequelize.NOW,
-    updated_at: Sequelize.NOW
+    coffeeshop_id: 1
   })
   .then(createdMeetup => {
     var meetup = createdMeetup
     db.user.max('id')
     .then(max => {
-      userMeetup.create({
+      db.userMeetup.create({
         user_id: req.session.user.id,
         meetup_id: meetup.id
       });
-      userMeetup.create({
+      db.userMeetup.create({
         //Meetup for Random user!
         user_id: Math.floor(Math.random() * max),
         meetup_id: meetup.id
