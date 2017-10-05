@@ -111,6 +111,19 @@
               </div>
             </div>
           </div>
+          <div class='cardholder'>
+            <div class="col s12 m6 offset-m3">
+              <div class="card amber darken-2">
+                <div class="card-content white-text">
+                  <span class="card-title">Sample Card 5</span>
+                  <p>This is a sample card so that I know what the heck I'm doing.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">Edit Link</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -118,14 +131,10 @@
       <div class='content-2'>
         <h2 class="main-label">Upcoming Meetups</h2>
 
-        <% let var idArray = []; %>
         <!-- if statement goes here -->
         <% meetups.forEach(function(meetup) { %>
           <!-- below, figure out what the object is -->
-          <% if (meetup.accepted === true) { %>
-            <% idArray.push(meetup.id); %>
-          <% } %>
-        <% } %>
+            <% if (meetup.accepted === true) { %>
             <div class="row">
               <div class='cardholder'>
                 <div class="col s12 m6">
@@ -144,18 +153,17 @@
                 </div>
               </div>
             </div>
-            <% }); %>
-          <% } %>
+            <% } %>
+          <% }) %>
 
 
         <div class='content-3'>
           <h2 class="main-label">Pending Meetups</h2>
 
-          <% let var idArray = []; %>
           <!-- if statement goes here -->
-          <% meetups.forEach(function(meetups) { %>
+          <% meetups.forEach(function(meetup) { %>
             <!-- below, figure out what the object is -->
-            <% if (meetup.accepted === false) { %>
+              <% if (meetup.accepted === true) { %>
               <div class="row">
                 <div class='cardholder'>
                   <div class="col s12 m6">
@@ -174,8 +182,8 @@
                   </div>
                 </div>
               </div>
-              <% }); %>
-            <% } %>
+              <% } %>
+            <% }); %>
 
 
 
