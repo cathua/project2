@@ -28,6 +28,7 @@ router.get('/', ensureLoggedIn, function(req, res) {
 
 /* GET edit profile */
 router.get('/edit', ensureLoggedIn, function(req, res) {
+  console.log("getTest")
   db.user.findById(req.session.user.userId, {
     attributes: ['userId', 'f_name', 'l_name', 'username']
   })
@@ -36,8 +37,12 @@ router.get('/edit', ensureLoggedIn, function(req, res) {
   })})
 
 /* EDIT personal profile */
-router.put('/edit', ensureLoggedIn, function(req, res) {
+router.put('/', ensureLoggedIn, function(req, res) {
+  console.log("puttest")
+})
 
+router.post('/edit', ensureLoggedIn, function(req, res) {
+  console.log("posttest")
 })
 
 

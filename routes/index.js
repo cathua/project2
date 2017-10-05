@@ -73,7 +73,7 @@ router.post('/login', function(req,res) {
   })
   .then(user => {
     if (!user) {
-      res.render('/index_signin_error');
+      res.render('/index_login_error');
     }
     let salt = user.salt;
     let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
