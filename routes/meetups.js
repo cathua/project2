@@ -41,8 +41,8 @@ router.get('/', ensureLoggedIn, function(req, res) {
           meetupWithUsers.name = coffeeshop.name;
           meetupWithUsers.personToMeet = (users[0].id === req.session.user.id) ? users[1].f_name : users[0].f_name;
           meetupWithUsers.personToMeetLname = (users[0].id === req.session.user.id) ? users[1].l_name : users[0].l_name;
-          meetupWithUsers.date = meetup.date.split(" ")[0];
-          meetupWithUsers.time = meetup.date.split(" ")[1];
+          meetupWithUsers.date = meetup.datetime.split(" ")[0];
+          meetupWithUsers.time = meetup.datetime.split(" ")[1];
           return meetupWithUsers;
         })
       )
