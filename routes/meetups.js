@@ -30,7 +30,6 @@ router.get('/', ensureLoggedIn, function(req, res) {
     meetupsWithUsers = [];
     var meetupWithUsers;
 
-<<<<<<< HEAD
     meetups.forEach(meetup => {
       meetupsWithUsers.push(
         Promise.all([
@@ -42,20 +41,6 @@ router.get('/', ensureLoggedIn, function(req, res) {
           meetupWithUsers.name = coffeeshop.name;
           meetupWithUsers.personToMeet = (users[0].id === req.session.user.id) ? users[1].f_name : users[0].f_name;
           return meetupWithUsers;
-=======
-        //get the location from coffeeshop_id
-      meetup.getCoffeeshop()
-      .then(coffeeshop => {
-        console.log('coffeeshop: ', coffeeshop.name)
-        meetupWithUsers.name = coffeeshop.name;
-      });
-      meetup.getUsers()
-      .then(usersInMeetup => {
-        usersInMeetup.forEach(userInMeetup => {
-          if (usersInMeetup.id !== req.session.user.id) {
-            meetupWithUsers.personToMeet = usersInMeetup.f_name;
-          }
->>>>>>> bc4a75d9a9fda17386c5cd033fa471916e0e668e
         })
       )
     })
