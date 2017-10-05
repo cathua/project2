@@ -36,6 +36,12 @@ module.exports = {
       Example:
 
     */
+<<<<<<< HEAD
     return queryInterface.bulkDelete('coffeeshops', null, {});
+=======
+
+    return queryInterface.bulkDelete('coffeeshops', null, {});
+
+>>>>>>> bc4a75d9a9fda17386c5cd033fa471916e0e668e
   }
 };
