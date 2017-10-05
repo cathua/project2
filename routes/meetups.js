@@ -89,7 +89,7 @@ router.get('/:id/edit', function (req, res) {
 
 /* POST meetup */
 router.post('/', function(req, res) {
-  console.log('i am posting');
+  // console.log('i am posting');
   var date = new Date();
   console.log(date);
   db.meetup.create({
@@ -111,7 +111,10 @@ router.post('/', function(req, res) {
         meetup_id: meetup.id
       });
     })
-
+  })
+  .then(function(meetups) {
+    // res.render('/meetups');
+    res.redirect('/meetups');
   })
 })
 // use case: you say you are free for coffee. the post route creates a new meetup for you.
@@ -135,7 +138,7 @@ router.put('/:id', function(req, res) {
       datetime: req.body.date + " " + req.body.time
     })
     .then(function(meetups) {
-      res.redirect('/meetups');
+      res.render('/meetups');
     })
   })
 })
