@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
         // meetup.belongsToMany(db.user, { through: 'userMeetup' })
         // meetup.hasOne('coffeeshop', { foreignKey: 'coffeeshop_id' })
       }

@@ -25,8 +25,6 @@ router.get('/', ensureLoggedIn, function(req, res) {
     }
   })
   .then(function(user) {
-    // user.getMeetups()
-    // .then(meetups => {
       //create an array to store all the meetups with appended users and location
       var meetupsWithUsers = [];
       user.meetups.forEach(meetup => {
@@ -51,7 +49,6 @@ router.get('/', ensureLoggedIn, function(req, res) {
       res.render("meetups", {meetups: meetupsWithUsers});
     })
   })
-// })
 
 /* GET meetup by id */
 router.get('/:id', function (req, res) {

@@ -40,7 +40,6 @@ db.Sequelize = Sequelize;
 
 
 db.meetup.belongsToMany(db.user, { through: 'userMeetup', foreignKey: 'user_id'})
-// db.meetup.hasOne('coffeeshop', { foreignKey: 'coffeeshop_id' })
 db.user.belongsToMany(db.meetup, { through: 'userMeetup', foreignKey: 'meetup_id' })
 
 module.exports = db;
