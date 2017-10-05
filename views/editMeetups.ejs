@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Coffee 4&#183;2</title>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/users.css' />
+
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+
+
+  </head>
+  <body>
+    <div class="header-container">
+      <header id="main-nav" class="page-header clearfix">
+        <div id="left">
+          <h1 class="logo"><a class='header-link' href="/"><span>Coffee 4&#183;2</span> <i class="fa fa-coffee"></i></a></h1>
+        </div>
+        <div id="right">
+          <span class='nav-box center-align valign-wrapper' id="profile-link"><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button"><a class="profile" href="/users">Profile</a></button></span>
+          <span class='nav-box center-align valign-wrapper' id="logout"><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button" data-toggle="modal" data-target="#myModal3">Log Out</button></span>
+        </div>
+      </header>
+    </div>
+
+        <div id="myModal3" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Log Out</h4>
+              </div>
+              <form>
+                <div class="modal-body">
+                  Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-default">Log Out</button>
+                </div>
+              </form>
+              </div>
+
+            </div>
+          </div>
+
+          <div class='content'>
+            <h1 class="title-header">Edit Your Meetup</h1>
+            <div class='content-1'>
+              <h2 class="main-label">Here's the information on your meetup. Feel free to change what you need.</h2>
+              <div class="row">
+                <form action="/meetups/:id/edit?_method=PUT" method="post">
+                  <div class="col s12">
+                    This meetup is with <%= meetup.personToMeet %> <%= meetup.personToMeetLname %>.
+                    <br />
+                    The meetup is set for
+                    <div class="input-field inline">
+                      <input name='datetime' id="date-time" type="text" class="validate" value="<%= meetup.datetime %>">
+                    </div>
+                    at
+                    <div class="input-field inline">
+                      <input name='name' id="name" type="text" class="validate" value="<%= meetup.name %>">
+                    </div>
+                    , which is located at
+                    <div class="input-field inline">
+                      <input name='location' id="location" type="text" class="validate" value="<%= meetup.location %>">
+                    </div>
+                  </div>
+                  <input type="submit" class="btn btn-info btn-lg z-depth-0 conf-button" value="Confirm Changes">
+                  <a href='/users'><button type="button" class="btn btn-info btn-lg z-depth-0 conf-button">Cancel</button></a>
+                </form>
+                </div>
+              </div>
+            </div>
+
+
+      </body>
+</html>

@@ -40,6 +40,7 @@ router.get('/', ensureLoggedIn, function(req, res) {
           meetupWithUsers = meetup;
           meetupWithUsers.name = coffeeshop.name;
           meetupWithUsers.personToMeet = (users[0].id === req.session.user.id) ? users[1].f_name : users[0].f_name;
+          meetupWithUsers.personToMeetLname = (users[0].id === req.session.user.id) ? users[1].l_name : users[0].l_name;
           return meetupWithUsers;
         })
       )
@@ -48,7 +49,6 @@ router.get('/', ensureLoggedIn, function(req, res) {
     return Promise.all(meetupsWithUsers);
   })
   .then(function(meetupsWithUsers) {
-    // console.log("a;lskdfj;aslkdfj ;aslkdjf;aslkdjf ;askldfj; lkasj");
     console.log("meetupsWithUsers: ", meetupsWithUsers);
     res.render("meetups", {meetups: meetupsWithUsers});
   })

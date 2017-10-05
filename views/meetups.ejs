@@ -25,7 +25,7 @@
           <h1 class="logo"><a class='header-link' href="/"><span>Coffee 4&#183;2</span> <i class="fa fa-coffee"></i></a></h1>
         </div>
         <div id="right">
-          <span class='nav-box center-align valign-wrapper' id="profile-link"><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button"><a class="profile" href="#">Profile</a></button></span>
+          <span class='nav-box center-align valign-wrapper' id="profile-link"><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button"><a class="profile" href="/users">Profile</a></button></span>
           <span class='nav-box center-align valign-wrapper' id="logout"><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button" data-toggle="modal" data-target="#myModal3">Log Out</button></span>
         </div>
       </header>
@@ -56,7 +56,7 @@
     <div class="content">
       <h1 class="title-header">Your Meetups</h1>
 
-      <div class='content-1'>
+      <!-- <div class='content-1'>
         <h2 class="main-label">Sample Meetup</h2>
         <div class="row">
           <div class='cardholder'>
@@ -125,7 +125,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
 
       <div class='content-2'>
@@ -134,9 +134,39 @@
         <!-- if statement goes here -->
         <% meetups.forEach(function(meetup) { %>
           <!-- below, figure out what the object is -->
-            <% if (meetup.accepted === true) { %>
+          <% if (meetup.accepted === true) { %>
+
             <div class="row">
-              <div class='cardholder'>
+              <div class="col s12 m6">
+                <div class="card amber darken-2">
+                  <div class="card-content white-text">
+                    <!-- retrieve the name of the other person  -->
+                    <span class="card-title">Coffee with <%= meetup.personToMeet %></span>
+                    <!-- retrieve information about the meetup -->
+                    <!-- specifically, get the date and the location -->
+                    <p>Meet at <%= meetup.name %> on <%= meetup.datetime %></p>
+                  </div>
+                  <div class="card-action">
+                    <!-- gotta get the edit link, and make the edit route -->
+                    <a class='edit-link' href="/meetups/:id">Edit Link</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }; %>
+          <% }) %>
+        </div>
+
+
+        <div class='content-3'>
+          <h2 class="main-label">Pending Meetups</h2>
+
+          <!-- if statement goes here -->
+          <% meetups.forEach(function(meetup) { %>
+            <!-- below, figure out what the object is -->
+            <% if (meetup.accepted === false) { %>
+
+              <div class="row">
                 <div class="col s12 m6">
                   <div class="card amber darken-2">
                     <div class="card-content white-text">
@@ -147,43 +177,15 @@
                       <p>Meet at <%= meetup.name %> on <%= meetup.datetime %></p>
                     </div>
                     <div class="card-action">
+                      <!-- gotta get the edit link, and make the edit route -->
                       <a href="#">Edit Link</a>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <% } %>
-          <% }) %>
-
-
-        <div class='content-3'>
-          <h2 class="main-label">Pending Meetups</h2>
-
-          <!-- if statement goes here -->
-          <% meetups.forEach(function(meetup) { %>
-            <!-- below, figure out what the object is -->
-              <% if (meetup.accepted === true) { %>
-              <div class="row">
-                <div class='cardholder'>
-                  <div class="col s12 m6">
-                    <div class="card amber darken-2">
-                      <div class="card-content white-text">
-                        <!-- retrieve the name of the other person  -->
-                        <span class="card-title">Coffee with <%= meetup.personToMeet %></span>
-                        <!-- retrieve information about the meetup -->
-                        <!-- specifically, get the date and the location -->
-                        <p>Meet at <%= meetup.name %> on <%= meetup.datetime %></p>
-                      </div>
-                      <div class="card-action">
-                        <a href="#">Edit Link</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <% } %>
-            <% }); %>
+              <% }; %>
+            <% }) %>
+          </div>
 
 
 
