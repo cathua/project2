@@ -89,9 +89,11 @@ router.get('/:id/edit', function (req, res) {
 
 /* POST meetup */
 router.post('/', function(req, res) {
+  var newDate = new Date();
   console.log('i am posting');
+  console.log('new date', new Date());
   db.meetup.create({
-    datetime: "07/30/1995 4:20pm",
+    datetime: newDate.toString(),
     accepted: false,
     coffeeshop_id: 1,
     created_at: Sequelize.NOW,
