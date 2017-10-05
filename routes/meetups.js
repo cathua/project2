@@ -25,33 +25,31 @@ router.get('/', ensureLoggedIn, function(req, res) {
     }
   })
   .then(function(user) {
-    // user.getMeetups()
-    // .then(meetups => {
-      //create an array to store all the meetups with appended users and location
-      var meetupsWithUsers = [];
-      user.meetups.forEach(meetup => {
-        var meetupWithUsers = {};
-        meetupWithUsers.datetime = meetup.datetime;
-        meetupWithUsers.accepted = meetup.accepted;
+    var meetupsWithUsers = [];
+    user.meetups.forEach(meetup => {
+      var meetupWithUsers = {};
+      meetupWithUsers.datetime = meetup.datetime;
+      meetupWithUsers.accepted = meetup.accepted;
 
         //get the location from coffeeshop_id
-        meetup.getCoffeeshop()
-        .then(coffeeshop => {
-          meetupWithUsers.name = coffeeshop.name;
-        });
-        meetup.getUsers()
-        .then(usersInMeetup => {
-          usersInMeetup.forEach(userInMeetup => {
-            if (usersInMeetup.userId !== req.session.user.userId) {
-              meetupWithUsers.personToMeet = usersInMeetup.f_name;
-            }
-          })
+      meetup.getCoffeeshop()
+      .then(coffeeshop => {
+        console.log('coffeeshop: ', coffeeshop.name)
+        meetupWithUsers.name = coffeeshop.name;
+      });
+      meetup.getUsers()
+      .then(usersInMeetup => {
+        usersInMeetup.forEach(userInMeetup => {
+          if (usersInMeetup.userId !== req.session.user.userId) {
+            meetupWithUsers.personToMeet = usersInMeetup.f_name;
+          }
         })
       })
-      res.render("meetups", {meetups: meetupsWithUsers});
     })
+    // console.log("meetups with users: ", meetupsWithUsers)
+    res.render("meetups", {meetups: meetupsWithUsers});
   })
-// })
+})
 
 /* GET meetup by id */
 router.get('/:id', function (req, res) {
@@ -63,28 +61,26 @@ router.get('/:id', function (req, res) {
 
 /* POST meetup */
 router.post('/', function(req, res) {
-  var coffeeshop_id = req.body.coffeeshop_id;
-  var datetime = req.body.datetime;
-  var accepted = false;
+
   db.meetup.create({
-    datetime: datetime,
-    accepted: accepted,
-    coffeeshop_id: coffeeshop_id,
+    datetime: req.body.datetime,
+    accepted: false,
+    coffeeshop_id: req.body.coffeeshop_id,
     created_at: Sequelize.NOW,
     updated_at: Sequelize.NOW
   })
-  .then(meetup => {
-    var decoded = jwt.decode(req.body.token);
-    var meetupId = meetup.id;
+  .then(createdMeetup => {
+    var meetup = createdMeetup
     db.user.max('userId')
     .then(max => {
       userMeetup.create({
-        user_id: decoded.id,
-        meetup_id: meetupId
+        user_id: req.session.user.userId,
+        meetup_id: meetup.id
       });
       userMeetup.create({
+        //Meetup for Random user!
         user_id: Math.floor(Math.random() * max),
-        meetup_id: meetupId
+        meetup_id: meetup.id
       });
     })
 

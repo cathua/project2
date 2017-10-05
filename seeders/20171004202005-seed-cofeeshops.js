@@ -8,11 +8,11 @@ module.exports = {
         city: "Tysons Corner",
         state: "VA",
         latitude: "38.9159306719076",
-        longitude: "-77.2230201777054"
+        longitude: "-77.2230201777054",
         rating: 3,
         price: "$$",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        created_at: new Date(),
+        updated_at: new Date()
         },
         {
           name: "Peet's Coffee",
@@ -20,11 +20,11 @@ module.exports = {
           city: "Vienna",
           state: "VA",
           latitude: "38.9164",
-          longitude: "-77.22674"
+          longitude: "-77.22674",
           rating: 4.5,
           price: "$",
-          createdAt: new Date(),
-          updatedAt: new Date()
+          created_at: new Date(),
+          updated_at: new Date()
           }], {});
   },
 
