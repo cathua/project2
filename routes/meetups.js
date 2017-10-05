@@ -82,7 +82,7 @@ router.get('/:id/edit', function (req, res) {
   })
   .then(function(meetup) {
     console.log(meetup);
-    res.render('editMeetups', {meetup: meetup[0], cofeeshops: meetup[0].coffeeshops});
+    res.render('editMeetups', {meetup: meetup[0], coffeeshops: meetup[0].coffeeshops});
   })
 })
 

@@ -13,7 +13,8 @@
 
 
     <script src="//code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
 
 
@@ -58,7 +59,7 @@
             <div class='content-1'>
               <h2 class="main-label">Here's the information on your meetup. Feel free to change what you need.</h2>
               <div class="row">
-                <form action="/meetups/:id/edit?_method=PUT" method="post">
+                <form action="/meetups/?_method=PUT" method="post">
                   <div class="col s12">
                     This meetup is with <%= meetup.personToMeet %> <%= meetup.personToMeetLname %>.
                     <br />
@@ -85,7 +86,7 @@
                     .
                   </div>
                   <input type="submit" class="btn btn-info btn-lg z-depth-0 conf-button" value="Confirm Changes">
-                  <a href='/users'><button type="button" class="btn btn-info btn-lg z-depth-0 conf-button">Cancel</button></a>
+                  <a href='/meetups'><button type="button" class="btn btn-info btn-lg z-depth-0 conf-button">Cancel</button></a>
                 </form>
                 </div>
               </div>
