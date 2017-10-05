@@ -9,7 +9,7 @@ var striptags = require('striptags');
 const ensureLoggedIn = (req, res, next) => {
   if (!req.session || !req.session.user) {
     console.log('req.session: ', req.session);
-    res.redirect('/login');
+    res.redirect('/');
   } else {
     next();
   }
@@ -22,7 +22,15 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/* POST sign-up */
+/* GET logout */
+router.get('/logout', (req, res, next) => {
+  req.session.destroy(err => {
+    res.locals.user = {};
+    res.render('index');
+  });
+});
+
+/* POST user sign-up */
 router.post('/signup', function(req, res){
   var genSalt = bcrypt.genSaltSync(10);
   db.user.findOne({
@@ -39,11 +47,15 @@ router.post('/signup', function(req, res){
         hashed_password: bcrypt.hashSync(req.body.password, genSalt),
         salt: genSalt
       })
+      .then(user => {
+        req.session.user = user;
+        res.redirect('/users');
+      })
     }
-    if (user) {
-      console.log('username exists');
+    else {
       res.redirect('/index_signup_error');
     }
+
   })
 })
 

@@ -27,7 +27,7 @@ router.get('/', ensureLoggedIn, function(req, res) {
     return user.getMeetups();
   })
   .then(function(meetups) {
-    meetupsWithUsers = [];
+    var meetupsWithUsers = [];
     var meetupWithUsers;
 
     meetups.forEach(meetup => {
@@ -47,7 +47,6 @@ router.get('/', ensureLoggedIn, function(req, res) {
         })
       )
     })
-    console.log("meetupsWithUsers", meetupsWithUsers);
     return Promise.all(meetupsWithUsers);
   })
   .then(function(meetupsWithUsers) {
@@ -58,9 +57,32 @@ router.get('/', ensureLoggedIn, function(req, res) {
 
 /* GET meetup edit page by id */
 router.get('/:id/edit', function (req, res) {
-  db.meetup.findById(req.body.id)
+  var m;
+  var Promises = [];
+  db.meetup.findById(req.params.id)
   .then(function(meetup) {
-    res.status(200).json({meetup: meetup});
+    Promises.push(
+    Promise.all([
+      meetup.getCoffeeshop(),
+      meetup.getUsers(),
+      db.coffeeshop.findAll()
+    ])
+    .spread((coffeeshop, users, all_shops) => {
+      m = {};
+      m.name = coffeeshop.name;
+      m.personToMeet = (users[0].id === req.session.user.id) ? users[1].f_name : users[0].f_name;
+      m.personToMeetLname = (users[0].id === req.session.user.id) ? users[1].l_name : users[0].l_name;
+      m.date = meetup.datetime.split(" ")[0];
+      m.time = meetup.datetime.split(" ")[1];
+      m.coffeeshops = all_shops;
+      return m;
+    })
+  )
+    return Promise.all(Promises);
+  })
+  .then(function(meetup) {
+    console.log(meetup);
+    res.render('editMeetups', {meetup: meetup[0], cofeeshops: meetup[0].coffeeshops});
   })
 })
 
