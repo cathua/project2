@@ -17,7 +17,11 @@
 #logout {
   width: 40%
 }
+/*
+.conf-button {
+  background-color: #FFA000;
+}
 
-/*.auth-button{
-  height: 100%;
+.conf-button:hover{
+  background-color: #EC7505;
 }*/

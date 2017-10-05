@@ -19,6 +19,7 @@
     "express-session": "^1.15.6",
     "jsonwebtoken": "^8.0.1",
     "jwt-decode": "^2.2.0",
+    "method-override": "^2.3.10",
     "morgan": "~1.8.1",
     "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",

@@ -37,12 +37,14 @@ router.get('/edit', ensureLoggedIn, function(req, res) {
   })})
 
 /* EDIT personal profile */
-router.put('/', ensureLoggedIn, function(req, res) {
-  console.log("puttest")
+router.put('/editing', ensureLoggedIn, function(req, res) {
+  console.log("puttest");
+  console.log('req.body', req.session);
 })
 
 router.post('/edit', ensureLoggedIn, function(req, res) {
-  console.log("posttest")
+  console.log("posttest");
+  console.log('req.body', req.session);
 })
 
 
