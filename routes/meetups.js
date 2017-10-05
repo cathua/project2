@@ -25,11 +25,12 @@ router.get('/', ensureLoggedIn, function(req, res) {
     }
   })
   .then(function(user) {
-    var meetupsWithUsers = [];
-    user.meetups.forEach(meetup => {
-      var meetupWithUsers = {};
-      meetupWithUsers.datetime = meetup.datetime;
-      meetupWithUsers.accepted = meetup.accepted;
+      //create an array to store all the meetups with appended users and location
+      var meetupsWithUsers = [];
+      user.meetups.forEach(meetup => {
+        var meetupWithUsers = {};
+        meetupWithUsers.datetime = meetup.datetime;
+        meetupWithUsers.accepted = meetup.accepted;
 
         //get the location from coffeeshop_id
       meetup.getCoffeeshop()

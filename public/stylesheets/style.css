@@ -136,3 +136,11 @@ li {
   padding: 0.2em;
   margin: 0 auto;
 }
+
+.conf-button {
+  background-color: #FFA000;
+}
+
+.conf-button:hover{
+  background-color: #EC7505;
+}
