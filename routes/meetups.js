@@ -3,8 +3,7 @@ var db = require('../models');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
 var Sequelize = require('sequelize');
-const jwt = require('jsonwebtoken');
-const jwtCheck = require('express-jwt');
+var Promise = require('bluebird');
 
 const ensureLoggedIn = (req, res, next) => {
   if (!req.session || !req.session.user) {
@@ -25,29 +24,32 @@ router.get('/', ensureLoggedIn, function(req, res) {
     }
   })
   .then(function(user) {
-      //create an array to store all the meetups with appended users and location
-      var meetupsWithUsers = [];
-      user.meetups.forEach(meetup => {
-        var meetupWithUsers = {};
-        meetupWithUsers.datetime = meetup.datetime;
-        meetupWithUsers.accepted = meetup.accepted;
+    return user.getMeetups();
+  })
+  .then(function(meetups) {
+    meetupsWithUsers = [];
+    var meetupWithUsers;
 
-        //get the location from coffeeshop_id
-      meetup.getCoffeeshop()
-      .then(coffeeshop => {
-        console.log('coffeeshop: ', coffeeshop.name)
-        meetupWithUsers.name = coffeeshop.name;
-      });
-      meetup.getUsers()
-      .then(usersInMeetup => {
-        usersInMeetup.forEach(userInMeetup => {
-          if (usersInMeetup.id !== req.session.user.id) {
-            meetupWithUsers.personToMeet = usersInMeetup.f_name;
-          }
+    meetups.forEach(meetup => {
+      meetupsWithUsers.push(
+        Promise.all([
+          meetup.getCoffeeshop(),
+          meetup.getUsers()
+        ])
+        .spread((coffeeshop, users) => {
+          meetupWithUsers = meetup;
+          meetupWithUsers.name = coffeeshop.name;
+          meetupWithUsers.personToMeet = (users[0].id === req.session.user.id) ? users[1].f_name : users[0].f_name;
+          return meetupWithUsers;
         })
-      })
+      )
     })
-    // console.log("meetups with users: ", meetupsWithUsers)
+    console.log("meetupsWithUsers", meetupsWithUsers);
+    return Promise.all(meetupsWithUsers);
+  })
+  .then(function(meetupsWithUsers) {
+    // console.log("a;lskdfj;aslkdfj ;aslkdjf;aslkdjf ;askldfj; lkasj");
+    console.log("meetupsWithUsers: ", meetupsWithUsers);
     res.render("meetups", {meetups: meetupsWithUsers});
   })
 })
