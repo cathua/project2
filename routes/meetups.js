@@ -19,7 +19,7 @@ const ensureLoggedIn = (req, res, next) => {
 
 /* GET all meetups */
 router.get('/', ensureLoggedIn, function(req, res) {
-  db.user.findById(req.session.user.userId, {
+  db.user.findById(req.session.user.id, {
     include: {
       model: db.meetup
     }
@@ -41,7 +41,7 @@ router.get('/', ensureLoggedIn, function(req, res) {
       meetup.getUsers()
       .then(usersInMeetup => {
         usersInMeetup.forEach(userInMeetup => {
-          if (usersInMeetup.userId !== req.session.user.userId) {
+          if (usersInMeetup.id !== req.session.user.id) {
             meetupWithUsers.personToMeet = usersInMeetup.f_name;
           }
         })
@@ -72,10 +72,10 @@ router.post('/', function(req, res) {
   })
   .then(createdMeetup => {
     var meetup = createdMeetup
-    db.user.max('userId')
+    db.user.max('id')
     .then(max => {
       userMeetup.create({
-        user_id: req.session.user.userId,
+        user_id: req.session.user.id,
         meetup_id: meetup.id
       });
       userMeetup.create({
