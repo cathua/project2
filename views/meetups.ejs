@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/users.css' />
+    <link rel='stylesheet' href='/stylesheets/meetups.css' />
 
 
     <script src="//code.jquery.com/jquery.js"></script>
@@ -59,14 +59,55 @@
       <div class='content-1'>
         <h2 class="main-label">Sample Meetup</h2>
         <div class="row">
-          <div class="col s12 m6">
-            <div class="card amber darken-2">
-              <div class="card-content white-text">
-                <span class="card-title">Sample Card</span>
-                <p>This is a sample card so that I know what the heck I'm doing.</p>
+          <div class='cardholder'>
+            <div class="col s12 m6">
+              <div class="card amber darken-2">
+                <div class="card-content white-text">
+                  <span class="card-title">Coffee with Ming</span>
+                  <p>Meet at Peet's Coffee on 10/06/2017.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">Edit Link</a>
+                </div>
               </div>
-              <div class="card-action">
-                <a href="#">Edit Link</a>
+            </div>
+          </div>
+          <div class='cardholder'>
+            <div class="col s12 m6">
+              <div class="card amber darken-2">
+                <div class="card-content white-text">
+                  <span class="card-title">Sample Card 2</span>
+                  <p>This is a sample card so that I know what the heck I'm doing.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">Edit Link</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='cardholder'>
+            <div class="col s12 m6">
+              <div class="card amber darken-2">
+                <div class="card-content white-text">
+                  <span class="card-title">Sample Card 3</span>
+                  <p>This is a sample card so that I know what the heck I'm doing.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">Edit Link</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='cardholder'>
+            <div class="col s12 m6">
+              <div class="card amber darken-2">
+                <div class="card-content white-text">
+                  <span class="card-title">Sample Card 4</span>
+                  <p>This is a sample card so that I know what the heck I'm doing.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">Edit Link</a>
+                </div>
               </div>
             </div>
           </div>
@@ -77,59 +118,64 @@
       <div class='content-2'>
         <h2 class="main-label">Upcoming Meetups</h2>
 
+        <% let var idArray = []; %>
         <!-- if statement goes here -->
-        <% if (meetups.accepted === true) { %>
+        <% meetups.forEach(function(meetup) { %>
           <!-- below, figure out what the object is -->
-          <% meetups.forEach(function(meetups) { %>
+          <% if (meetup.accepted === true) { %>
+            <% idArray.push(meetup.id); %>
+          <% } %>
+        <% } %>
             <div class="row">
-              <div class="col s12 m6">
-                <div class="card amber darken-2">
-                  <div class="card-content white-text">
-                    <!-- retrieve the name of the other person  -->
-                    <span class="card-title">Coffee with <%= meetups.personToMeet %></span>
-                    <!-- retrieve information about the meetup -->
-                    <!-- specifically, get the date and the location -->
-                    <p>Meet at <%= meetups.name %> on <%= meetups.datetime %></p>
-                  </div>
-                  <div class="card-action">
-                    <!-- gotta get the edit link, and make the edit route -->
-                    <a href="#">Edit Link</a>
+              <div class='cardholder'>
+                <div class="col s12 m6">
+                  <div class="card amber darken-2">
+                    <div class="card-content white-text">
+                      <!-- retrieve the name of the other person  -->
+                      <span class="card-title">Coffee with <%= meetup.personToMeet %></span>
+                      <!-- retrieve information about the meetup -->
+                      <!-- specifically, get the date and the location -->
+                      <p>Meet at <%= meetup.name %> on <%= meetup.datetime %></p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">Edit Link</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <% }); %>
           <% } %>
-        </div>
 
 
         <div class='content-3'>
           <h2 class="main-label">Pending Meetups</h2>
 
+          <% let var idArray = []; %>
           <!-- if statement goes here -->
-          <% if (meetups.accepted !== true) { %>
+          <% meetups.forEach(function(meetups) { %>
             <!-- below, figure out what the object is -->
-            <% meetups.forEach(function(meetups) { %>
+            <% if (meetup.accepted === false) { %>
               <div class="row">
-                <div class="col s12 m6">
-                  <div class="card amber darken-2">
-                    <div class="card-content white-text">
-                      <!-- retrieve the name of the other person  -->
-                      <span class="card-title">Coffee with <%= meetups.personToMeet %></span>
-                      <!-- retrieve information about the meetup -->
-                      <!-- specifically, get the date and the location -->
-                      <p>Meet at <%= meetups.name %> on <%= meetups.datetime %></p>
-                    </div>
-                    <div class="card-action">
-                      <!-- gotta get the edit link, and make the edit route -->
-                      <a href="#">Edit Link</a>
+                <div class='cardholder'>
+                  <div class="col s12 m6">
+                    <div class="card amber darken-2">
+                      <div class="card-content white-text">
+                        <!-- retrieve the name of the other person  -->
+                        <span class="card-title">Coffee with <%= meetup.personToMeet %></span>
+                        <!-- retrieve information about the meetup -->
+                        <!-- specifically, get the date and the location -->
+                        <p>Meet at <%= meetup.name %> on <%= meetup.datetime %></p>
+                      </div>
+                      <div class="card-action">
+                        <a href="#">Edit Link</a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               <% }); %>
             <% } %>
-          </div>
 
 
 
