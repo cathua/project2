@@ -144,11 +144,11 @@
                     <span class="card-title">Coffee with <%= meetup.personToMeet %></span>
                     <!-- retrieve information about the meetup -->
                     <!-- specifically, get the date and the location -->
-                    <p>Meet at <%= meetup.name %> on <%= meetup.datetime %></p>
+                    <p>Meet at <%= meetup.name %> on <%= meetup.date %> at <%= meetup.time %></p>
                   </div>
                   <div class="card-action">
                     <!-- gotta get the edit link, and make the edit route -->
-                    <a class='edit-link' href="/meetups/:id">Edit Link</a>
+                    <a class='edit-link' href="/meetups/<%= meetup.id %>/edit">Edit Link</a>
                   </div>
                 </div>
               </div>

@@ -41,6 +41,8 @@ router.get('/', ensureLoggedIn, function(req, res) {
           meetupWithUsers.name = coffeeshop.name;
           meetupWithUsers.personToMeet = (users[0].id === req.session.user.id) ? users[1].f_name : users[0].f_name;
           meetupWithUsers.personToMeetLname = (users[0].id === req.session.user.id) ? users[1].l_name : users[0].l_name;
+          meetupWithUsers.date = meetup.date.split(" ")[0];
+          meetupWithUsers.time = meetup.date.split(" ")[1];
           return meetupWithUsers;
         })
       )
@@ -54,8 +56,8 @@ router.get('/', ensureLoggedIn, function(req, res) {
   })
 })
 
-/* GET meetup by id */
-router.get('/:id', function (req, res) {
+/* GET meetup edit page by id */
+router.get('/:id/edit', function (req, res) {
   db.meetup.findById(req.body.id)
   .then(function(meetup) {
     res.status(200).json({meetup: meetup});

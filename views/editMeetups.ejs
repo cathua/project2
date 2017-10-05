@@ -64,16 +64,17 @@
                     <br />
                     The meetup is set for
                     <div class="input-field inline">
-                      <input name='datetime' id="date-time" type="text" class="validate" value="<%= meetup.datetime %>">
+                      <input name='date' id="date" type="text" class="datepicker" value='<%= meetup.date %>'>
+                    </div>
+                    at
+                    <div class="input-field inline">
+                      <input name='time' id="time" type="text" class="timepicker" value='<%= meetup.time %>'>
                     </div>
                     at
                     <div class="input-field inline">
                       <input name='name' id="name" type="text" class="validate" value="<%= meetup.name %>">
                     </div>
-                    , which is located at
-                    <div class="input-field inline">
-                      <input name='location' id="location" type="text" class="validate" value="<%= meetup.location %>">
-                    </div>
+                    .
                   </div>
                   <input type="submit" class="btn btn-info btn-lg z-depth-0 conf-button" value="Confirm Changes">
                   <a href='/users'><button type="button" class="btn btn-info btn-lg z-depth-0 conf-button">Cancel</button></a>
@@ -81,7 +82,6 @@
                 </div>
               </div>
             </div>
-
 
       </body>
 </html>
