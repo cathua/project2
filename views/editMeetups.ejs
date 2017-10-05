@@ -71,6 +71,14 @@
                       <input name='time' id="time" type="text" class="timepicker" value='<%= meetup.time %>'>
                     </div>
                     at
+                    <select name='name' id='name'>
+                      <option value='<%= meetup.name %>'><%= meetup.name %></option>
+                      <% coffeeshops.forEach(function(coffeeshop) { %>
+                        <% if (meetup.name !== coffeeshop.name) { %>
+                          <option value='<%= coffeeshop.name %>'><%= coffeeshop.name %></option>
+                        <% } %>
+                      <% }) %>
+                    </select>
                     <div class="input-field inline">
                       <input name='name' id="name" type="text" class="validate" value="<%= meetup.name %>">
                     </div>
