@@ -39,13 +39,26 @@ router.get('/edit', ensureLoggedIn, function(req, res) {
 /* EDIT personal profile */
 router.put('/edit', ensureLoggedIn, function(req, res) {
   console.log("puttest");
-  console.log('req.body', req.session);
+  db.user.findById(req.session.user.userId, {
+    attributes: ['userId', 'f_name', 'l_name', 'username']
+  })
+  .then(function(user) {
+    // console.log('req.body', req.body);
+    user.updateAttributes({
+      f_name: req.body.f_name,
+      l_name: req.body.l_name,
+      username: req.body.username
+    })
+    .then(function(user) {
+      res.render('users', { user: user });
+    })
+  })
 })
 
-router.post('/edit', ensureLoggedIn, function(req, res) {
-  console.log("posttest");
-  console.log('req.body', req.session);
-})
+// router.post('/edit', ensureLoggedIn, function(req, res) {
+//   console.log("posttest");
+//   console.log('req.body', req.session);
+// })
 
 
 module.exports = router;
