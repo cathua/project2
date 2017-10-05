@@ -91,7 +91,7 @@ router.get('/:id/edit', function (req, res) {
 router.post('/', function(req, res) {
   console.log('i am posting');
   db.meetup.create({
-    datetime: Sequelize.NOW,
+    datetime: "07/30/1995 4:20pm",
     accepted: false,
     coffeeshop_id: 1,
     created_at: Sequelize.NOW,
