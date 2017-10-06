@@ -4,6 +4,8 @@ Is it time for coffee for two? We hope you said yes.
 
 Welcome to Coffee 4&#183;2.
 
+![Coffee 4&#183;2 landing page](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Landing Page")
+
 ## Overview
 
 This application is a fullstack CRUD web application that randomly pairs users in its user database with others to facilitate meet-ups. By utilizing modules such as Express and BCrypt, this application allows for users to sign up for the app, log in to view user-specific information (e.g. their arranged meet-ups), edit their information, and create new meet-ups.
