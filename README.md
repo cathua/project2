@@ -56,3 +56,12 @@ The user is able to, as stated in the overview, create a new user. This is done 
 ## Testing
 
 Using `supertest` and `supertest-session`, the tests are able to render secure pages and log in. Further information to come on this.
+
+## Current Bugs
+
+* Logging in with empty username/password fields, makes the application redirect to the `/login` route
+..* This route has no content and renders an empty JSON object.
+* The meet-up cards on the `/meetups` route have incorrect formatting for the date and time.
+* The application does not check for duplicate usernames when the user changes their username in the `/users/edit` route.
+* The log-in and sign-up modal boxes do not close when the user clicks on another modal box.
+..* i.e., when the user clicks log-in and then clicks sign-up, the log-in modal box does not close.
