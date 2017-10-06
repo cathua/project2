@@ -50,7 +50,6 @@ router.get('/', ensureLoggedIn, function(req, res) {
     return Promise.all(meetupsWithUsers);
   })
   .then(function(meetupsWithUsers) {
-    // console.log("meetupsWithUsers: ", meetupsWithUsers);
     res.render("meetups", {meetups: meetupsWithUsers});
   })
 })
@@ -89,7 +88,6 @@ router.get('/:id/edit', function (req, res) {
 
 /* POST meetup */
 router.post('/', function(req, res) {
-  // console.log('i am posting');
   var date = new Date();
   console.log(date);
   db.meetup.create({
@@ -113,7 +111,6 @@ router.post('/', function(req, res) {
     })
   })
   .then(function(meetups) {
-    // res.render('/meetups');
     res.redirect('/meetups');
   })
 })
@@ -121,7 +118,6 @@ router.post('/', function(req, res) {
 
 /* PUT meetup by id */
 router.put('/:id', function(req, res) {
-  console.log("puttest");
   db.coffeeshop.find({
     where: {name: req.body.name}
   })
@@ -132,7 +128,6 @@ router.put('/:id', function(req, res) {
     attributes: ['id', 'name', 'datetime']
   })
   .then(function(meetup) {
-    // console.log('req.body', req.body);
     meetup.updateAttributes({
       name: req.body.name,
       datetime: req.body.date + " " + req.body.time
@@ -141,6 +136,11 @@ router.put('/:id', function(req, res) {
       res.render('/meetups');
     })
   })
+})
+
+/* UPDATE meetup to be confirmed. */
+router.put('/accept', function(req, res) {
+  // code to come
 })
 
 module.exports = router;

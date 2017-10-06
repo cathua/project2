@@ -39,7 +39,7 @@
           <div class="modal-header">
             <h4 class="modal-title">Log Out</h4>
           </div>
-          <form>
+          <form action='/logout' medthod='get'>
             <div class="modal-body">
               Are you sure you want to log out? We're gonna miss you.
             </div>
@@ -52,6 +52,7 @@
 
         </div>
       </div>
+
 
     <div class="content">
       <h1 class="title-header">Your Meetups</h1>
@@ -97,26 +98,20 @@
           <h2 class="main-label">Pending Meetups</h2>
 
           <div class="row">
-          <!-- if statement goes here -->
           <% meetups.forEach(function(meetup) { %>
-            <!-- below, figure out what the object is -->
             <% if (meetup.accepted === false) { %>
 
                 <div class="col s12 m6 ">
                   <div class="card amber darken-2">
                     <div class="card-content white-text">
-                      <!-- retrieve the name of the other person  -->
                       <span class="card-title">Coffee with <%= meetup.personToMeet %></span>
-                      <!-- retrieve information about the meetup -->
-                      <!-- specifically, get the date and the location -->
                       <p>Meet at <%= meetup.name %> on <%= meetup.date %> at <%= meetup.time %></p>
                     </div>
                     <div class="card-action">
-                      <!-- gotta get the edit link, and make the edit route -->
                       <a class='edit-link' href="/meetups/<%= meetup.id %>/edit">Edit</a>
                       <form action='/meetups' method="PUT">
-                        <!-- FIX THIS -->
-                        <a class='edit-link' href="/meetups">Accept</a>
+                        <input type="hidden" name="meetup_id" value="<%=meetup.id%>"/>
+                        <button type="submit" class='edit-link'>Accept</button>
                       </form>
                       <form action='/meetups' method="DELETE">
                         <a class='edit-link' href='/meetups'>Delete</a>
