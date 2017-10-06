@@ -96,7 +96,7 @@ router.post('/login', function(req,res) {
     }
     else {
       req.session.user = user;
-      res.redirect('/meetups');
+      res.redirect('meetups');
     }
   })
   .catch(err => {
