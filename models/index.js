@@ -8,15 +8,37 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
-if (!config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+// if (!config.use_env_variable) {
+//   var sequelize = new Sequelize(process.env[config.use_env_variable]);
+// } else {
+//   console.log(config);
+//   var sequelize = new Sequelize(config.database, config.username, config.password, {
+//     "host":
+//     "use_env_variable": "SESSION_SECRET",
+//     "use_env_variable": "DATABASE_URL",
+//     "dialect": "postgres"
+//   });
+// }
+
+// if (process.env.DATABASE_URL) {
+//   var sequelize = new Sequelize(process.env.DATABASE_URL, {
+//     dialect: 'postgres',
+//     protocol: 'postgres',
+//     use_env_variable: process.env.SESSION_SECRET,
+//     host: process.env.DATABASE_URL
+//   })
+// } else {
+//     var sequelize = new Sequelize(config.database, config.username, config.password, {
+//       host: "127.0.0.1",
+//       "use_env_variable": "SESSION_SECRET",
+//       "dialect": "postgres"
+//     });
+// }
+
+if (process.env.DATABASE_URL) {
+  var sequelize = new Sequelize(process.env.DATABASE_URL,config);
 } else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, {
-    "database": "coffee42_development",
-    "host": "127.0.0.1",
-    "use_env_variable": "JWT_SECRET",
-    "dialect": "postgres"
-  });
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
 fs
