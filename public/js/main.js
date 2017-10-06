@@ -19,5 +19,7 @@ $(document).ready(function(){
       autoclose: false, // automatic close timepicker
       ampmclickable: true, // make AM PM clickable
       aftershow: function(){} //Function for after opening timepicker
-  });  
+  });
+
+  $('select').material_select();
 })

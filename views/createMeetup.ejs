@@ -51,30 +51,27 @@
           </div>
 
           <div class='content'>
-            <h1 class="title-header">Edit Your Meetup</h1>
+            <h1 class="title-header">Create Your Meetup</h1>
             <div class='content-1'>
-              <h2 class="main-label">Here's the information on your meetup. Feel free to change what you need.</h2>
+              <h2 class="main-label">Choose the time and location of your meetup. We'll match you up with a person automatically!</h2>
               <div class="row">
-                <form action="/meetups/<%=meetup.id%>?_method=PUT" method="post">
+                <form action="/meetups" method="post">
                   <div class="col s12">
-                    This meetup is with <%= meetup.personToMeet %> <%= meetup.personToMeetLname %>.
                     <br />
-                    The meetup is set for
+                    Set this meetup for
                     <div class="input-field inline">
-                      <input name='date' id="date" type="text" class="datepicker" value='<%= meetup.date %>'>
+                      <input name='date' id="date" type="text" class="datepicker" placeholder="Date">
                     </div>
                     at
                     <div class="input-field inline">
-                      <input name='time' id="time" type="text" class="timepicker" value='<%= meetup.time %>'>
+                      <input name='time' id="time" type="text" class="timepicker" placeholder="Time">
                     </div>
                     at
                     <div class="input-field inline">
                     <select name='name' id='name'>
-                      <option value='<%= meetup.name %>'><%= meetup.name %></option>
+                      <option value="" disabled selected>Coffeeshop:</option>
                       <% coffeeshops.forEach(function(coffeeshop) { %>
-                        <% if (meetup.name !== coffeeshop.name) { %>
                           <option value='<%= coffeeshop.name %>'><%= coffeeshop.name %></option>
-                        <% } %>
                       <% }) %>
                     </select>
                     </div>

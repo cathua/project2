@@ -24,6 +24,7 @@ router.get('/', function(req, res, next) {
 
 /* GET logout */
 router.get('/logout', (req, res, next) => {
+  console.log('logging out lol');
   req.session.destroy(err => {
     res.locals.user = {};
     res.render('index');
@@ -95,7 +96,7 @@ router.post('/login', function(req,res) {
     }
     else {
       req.session.user = user;
-      res.redirect('/users');
+      res.redirect('/meetups');
     }
   })
   .catch(err => {

@@ -12,10 +12,6 @@
     <link rel='stylesheet' href='/stylesheets/meetups.css' />
 
 
-    <script src="//code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
-
 
   </head>
   <body>
@@ -45,7 +41,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-default">Log Out</button>
+              <a href="/logout"><button type="button" class="btn btn-default">Log Out</button></a>
             </div>
           </form>
           </div>
@@ -57,9 +53,7 @@
       <h1 class="title-header">Your Meetups</h1>
 
       <div class='content-1'>
-        <form action="/meetups" method="post">
-          <button type="submit" class="btn btn-default conf-button">New Meetup</button>
-        </form>
+        <a href="/meetups/create"><button href="/meetups/create" type="submit" class="btn btn-default">New Meetup</button></a>
       </div>
 
 
@@ -134,6 +128,8 @@
     </div>
 
 
-
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
   </body>
 </html>
