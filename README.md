@@ -3,7 +3,6 @@
 Is it time for coffee for two? We hope you said yes.
 
 Welcome to Coffee 4&#183;2.
-![Deployed Link](http://coffee42.herokuapp.com)
 ![Coffee 4&#183;2 landing page](https://github.com/cathua/project2/blob/master/Coffee42_LandingPage.png "Landing Page")
 
 ## Overview
@@ -17,6 +16,7 @@ The goals for each daily sprint were to render front-end views for the different
 ### Relevant Links
 
 [Trello Board](https://trello.com/b/6A38AkBR/coffee42)
+[Deployed Link](http://coffee42.herokuapp.com)
 
 ## Features
 
