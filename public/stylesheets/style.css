@@ -71,10 +71,6 @@ li {
   /*position: fixed;*/
 }
 
-/*#main-nav {
-  height: 10%;
-}*/
-
 #left {
   width: 80%;
 }
@@ -105,6 +101,10 @@ li {
 .title-header{
   text-align: center;
   font-size: 2.8em;
+}
+
+.content {
+  margin-bottom: 2em;
 }
 
 .main-label {
@@ -147,4 +147,26 @@ li {
 
 btn:visited {
   background-color: #EC7505 !important
+}
+
+footer {
+  display: block;
+  text-align: center;
+  font-size: .5em;
+  padding: 10px;
+  transition: 1s ease-in-out;
+}
+
+footer:hover {
+  background-color: #D84A05;
+}
+
+.footer-icon {
+  color: black;
+  font-size: 1em;
+}
+
+hr {
+  color: #8e5d2c;
+  margin-bottom: 0;
 }
