@@ -3,7 +3,7 @@
 Is it time for coffee for two? We hope you said yes.
 
 Welcome to Coffee 4&#183;2.
-
+![Deployed Link](http://coffee42.herokuapp.com)
 ![Coffee 4&#183;2 landing page](https://github.com/cathua/project2/blob/master/Coffee42_LandingPage.png "Landing Page")
 
 ## Overview
@@ -71,6 +71,7 @@ Using `supertest` and `supertest-session`, the tests are able to render secure p
 * The application does not check for duplicate usernames when the user changes their username in the `/users/edit` route.
 * The log-in and sign-up modal boxes do not close when the user clicks on another modal box.
 ..* i.e., when the user clicks log-in and then clicks sign-up, the log-in modal box does not close.
+* The random user matchup generator can and will occasionally match a user with themselves.
 
 ## Overall Impressions
 
@@ -78,7 +79,7 @@ Using `supertest` and `supertest-session`, the tests are able to render secure p
 
 -Catherine
 
-> Ming, if you have any impressions you should add them here!
+> Just a simple app to connect two random people who want to get coffee. What could go wrong? A lot, as it turns out, and it forced me to think and re-think my approaches to writing routes, fetching data, and ensuring security. There are still some small kinks to work out, but I'm very proud of what Catherine and I were able to accomplish this week.
 
 -Mingquan
 
@@ -89,5 +90,6 @@ Once again, thank you to the CODA program for giving us the opportunity to learn
 Thank you again to General Assembly's instructors and IA. Without their help our app would probably break much more, and look much more sad.
 
 Thank you to _Parks and Recreation_ for being my go-to show to watch when I'm stressed. _-Catherine_
+Thank you to _Brooklyn Nine-Nine_ for being my go-to show to watch when I'm stressed. _-Ming_
 
 And lastly, major thanks to coffee for bringing people together. We hope you enjoy Coffee 4&#183;2. Hopefully it will inspire you to get to know someone over a cuppa.
