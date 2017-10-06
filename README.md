@@ -70,4 +70,4 @@ Using `supertest` and `supertest-session`, the tests are able to render secure p
 
 > Overall, this project definitely challenged me in ways that I needed to be challenged. It encouraged me to continue working outside my comfort zone with a robust CRUD app, while still rooting me in my comfort zone of front-end development. While there are many things that I would love to continue improving, as of presentation day I am happy with what Ming and I have done and I'm glad we were able to create a cool and (hopefully!) meaningful MVP.
 
-> -Catherine
+-Catherine
