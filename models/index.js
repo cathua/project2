@@ -15,7 +15,7 @@ if (!config.use_env_variable) {
     "database": "coffee42_production",
     "host": "127.0.0.1",
     "use_env_variable": "SESSION_SECRET",
-    "use_env_variable": "DATABASE_URL"
+    "use_env_variable": "DATABASE_URL",
     "dialect": "postgres"
   });
 }

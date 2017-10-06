@@ -1,15 +1,18 @@
 {
   "development": {
     "database": "coffee42_development",
-    "use_env_variable": "SESSION_SECRET"
+    "use_env_variable": "SESSION_SECRET",
+    "dialect": "postgres"
   },
   "test": {
     "database": "coffee42_test",
-    "host": "127.0.0.1"
+    "host": "127.0.0.1",
+    "dialect": "postgres"
   },
   "production": {
     "database": "coffee42_production",
     "use_env_variable": "SESSION_SECRET",
-    "use_env_variable": "DATABASE_URL"
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres"
   }
 }
