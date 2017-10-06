@@ -102,14 +102,14 @@
                       <p>Meet at <%= meetup.name %> on <%= meetup.date %> at <%= meetup.time %></p>
                     </div>
                     <div class="card-action">
-                      <a class='edit-link' href="/meetups/<%= meetup.id %>/edit">Edit</a>
+                      <a class='edit-link center-align' href="/meetups/<%= meetup.id %>/edit"><button class='edit-link'>EDIT</button></a>
                       <form action='/meetups/accept?_method=PUT' method="POST">
                         <input type="hidden" name="meetup_id" value="<%=meetup.id%>"/>
-                        <button type="submit" class='edit-link'>Accept</button>
+                        <button type="submit" class='edit-link center-align'>ACCEPT</button>
                       </form>
                       <form action='/meetups?_method=DELETE' method="POST">
                         <input type="hidden" name="meetup_id" value="<%=meetup.id%>"/>
-                        <button type="submit" class='edit-link'>Delete</button>
+                        <button type="submit" class='edit-link center-align'>DELETE</button>
                       </form>
                     </div>
                   </div>
