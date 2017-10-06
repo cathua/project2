@@ -39,14 +39,6 @@ describe('GET authentication errors', function() {
     .set('accept', 'application/json')
     .expect(302, done);
   })
-
-  // it('accessing through incorrect login returns 200 response', function(done) {
-  //   api.post('/login')
-  //   .send({
-  //     username: 'moretesting',
-  //     password: 'coffee42'
-  //   })
-  // })
 })
 
 describe('POST login', function() {
@@ -59,6 +51,14 @@ describe('POST login', function() {
   it('should log in', function(done) {
     testSession.post('/login')
       .send({ username: 'huawkward', password: 'test' })
+      .expect(302, done);
+  })
+});
+
+describe('POST signup', function() {
+  it('should return a 302 when you sign up with duplicate username', function(done) {
+    testSession.post('/signup')
+      .send({ f_name: 'Cat', l_name: 'Hua', username: 'huawkward', password: 'test'})
       .expect(302, done);
   })
 })
