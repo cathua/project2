@@ -12,4 +12,6 @@
 
 .edit-link {
   color: white !important;
+  background-color: inherit;
+  border: none;
 }
