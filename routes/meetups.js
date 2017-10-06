@@ -128,6 +128,21 @@ router.post('/', function(req, res) {
 })
 // use case: you say you are free for coffee. the post route creates a new meetup for you.
 
+/* UPDATE meetup to be confirmed. */
+router.put('/accept', function(req, res) {
+  db.meetup.findById(req.body.meetup_id, {
+    attributes: ['id', 'accepted']
+  })
+  .then(meetup => {
+    meetup.updateAttributes({
+      accepted: true
+    })
+    .then(() => {
+      res.redirect('/meetups');
+    })
+  })
+})
+
 /* PUT meetup by id */
 router.put('/:id', function(req, res) {
   console.log("puttest");
@@ -155,11 +170,6 @@ router.put('/:id', function(req, res) {
       })
     })
   })
-})
-
-/* UPDATE meetup to be confirmed. */
-router.put('/accept', function(req, res) {
-
 })
 
 module.exports = router;
