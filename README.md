@@ -68,6 +68,20 @@ Using `supertest` and `supertest-session`, the tests are able to render secure p
 
 ## Overall Impressions
 
-> Overall, this project definitely challenged me in ways that I needed to be challenged. It encouraged me to continue working outside my comfort zone with a robust CRUD app, while still rooting me in my comfort zone of front-end development. While there are many things that I would love to continue improving, as of presentation day I am happy with what Ming and I have done and I'm glad we were able to create a cool and (hopefully!) meaningful MVP.
+> Overall, this project definitely challenged me in ways that I needed to be challenged. It encouraged me to continue working outside my comfort zone with a robust CRUD app, while still rooting me in front-end development. While there are many things that I would love to continue improving, as of presentation day I am happy with what Ming and I have done and I'm glad we were able to create a cool and (hopefully!) meaningful MVP.
 
 -Catherine
+
+> Ming, if you have any impressions you should add them here!
+
+-Mingquan
+
+## Additional Credits and Shoutouts
+
+Once again, thank you to the CODA program for giving us the opportunity to learn and create.
+
+Thank you again to General Assembly's instructors and IA. Without their help our app would probably break much more, and look much more sad.
+
+Thank you to __Parks and Recreation__ for being my go-to show to watch when I'm stressed. __-Catherine__
+
+And lastly, major thanks to coffee for bringing people together. We hope you enjoy Coffee 4&#183;2. Hopefully it will inspire you to get to know someone over a cuppa.
