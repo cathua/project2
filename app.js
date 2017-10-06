@@ -34,7 +34,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   cookie: { maxAge: 3600000},
   resave: false,
-  saveUnitialized: false
+  saveUninitialized: false
 }))
 
 // Remove extra Express header
