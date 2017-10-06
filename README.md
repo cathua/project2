@@ -43,6 +43,16 @@ To ensure that user data is protected, Coffee 4&#183;2 does not store any passwo
 
 ## Models & Associations
 
-Coffee 4&#183;2 utilizes three models, and one many-to-many association. The three models are `user`, `meetup`, and `coffeeshop`. The many-to-many association exists between `user` and `meetup`, as a single user has many meet-ups, and a single meet-up takes in two users. The model and its corresponding join table, `userMeetup`, is structured so that it can potentially take in more than two users, to facilitate group meet-ups. The entity-relationsip diagram is as follows.
+Coffee 4&#183;2 utilizes three model, and one many-to-many association. The three models are `user`, `meetup`, and `coffeeshop`. The many-to-many association exists between `user` and `meetup`, as a single user has many meet-ups, and a single meet-up takes in two users. The model and its corresponding join table, `userMeetup`, is structured so that it can potentially take in more than two users, to facilitate group meet-ups. The entity-relationsip diagram is as follows.
 
 ![ERD](https://github.com/cathua/project2/blob/master/ERD.png "Entity-Relationship Diagram")
+
+These models make it possible to use our RESTful routes, allowing us to GET, POST, PUT, and DELETE users and meet-ups.
+
+## Routes
+
+The user is able to, as stated in the overview, create a new user. This is done using a post request. Upon making a new account within the application, users are able to log in with another post request. If either the sign-in or log-in functions fail (either because of duplicate usernames or invalid username/password combinations), a get requests renders an error page. Within the app, get requests render the user's profile, their meet-ups, and edit pages. Put requests are able to update the user's information and meet-up information, post requests create new meet-ups, and delete requests remove meet-ups from the user's page.
+
+## Testing
+
+Using `supertest` and `supertest-session`, the tests are able to render secure pages and log in. Further information to come on this.
