@@ -13,7 +13,6 @@ if (!config.use_env_variable) {
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, {
     "database": "coffee42_development",
-    "host": "127.0.0.1",
     "use_env_variable": "SESSION_SECRET",
     "use_env_variable": "DATABASE_URL",
     "dialect": "postgres"
