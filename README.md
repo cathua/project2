@@ -90,6 +90,7 @@ Once again, thank you to the CODA program for giving us the opportunity to learn
 Thank you again to General Assembly's instructors and IA. Without their help our app would probably break much more, and look much more sad.
 
 Thank you to _Parks and Recreation_ for being my go-to show to watch when I'm stressed. _-Catherine_
+
 Thank you to _Brooklyn Nine-Nine_ for being my go-to show to watch when I'm stressed. _-Ming_
 
 And lastly, major thanks to coffee for bringing people together. We hope you enjoy Coffee 4&#183;2. Hopefully it will inspire you to get to know someone over a cuppa.
