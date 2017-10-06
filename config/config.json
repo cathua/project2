@@ -2,6 +2,7 @@
   "development": {
     "database": "coffee42_development",
     "use_env_variable": "SESSION_SECRET",
+    "use_env_variable": "DATABASE_URL",
     "dialect": "postgres"
   },
   "test": {
