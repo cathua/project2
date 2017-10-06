@@ -18,7 +18,7 @@ The goals for each daily sprint were to render front-end views for the different
 
 ## Features
 
-# Current features
+### Current features
 * Account creation.
 * Login verification.
 * Error messages for duplicate usernames (no duplicate usernames).
@@ -30,7 +30,7 @@ The goals for each daily sprint were to render front-end views for the different
 * Ability to edit personal user information (excluding password).
 * Ability to log out.
 
-# Future features
+### Future features
 * User can change their password.
 * User can select from a greater variety of locations (using the Yelp API to access more coffeeshops).
 
