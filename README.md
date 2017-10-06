@@ -1,6 +1,6 @@
 # unit02-project
 
-Is it time for coffee for two?
+Is it time for coffee for two? We hope you said yes.
 
 Welcome to Coffee 4&#183;2.
 
@@ -17,3 +17,13 @@ The goals for each daily sprint were to render front-end views for the different
 [Trello Board](https://trello.com/b/6A38AkBR/coffee42)
 
 ## Features
+
+* Account creation.
+* Login verification.
+* Error messages for duplicate usernames (no duplicate usernames).
+* Error messages for incorrect username/password combinations.
+* Ability to see all pending and upcoming meetups upon login.
+* Ability to edit their meet-ups.
+* Ability to create a new meet-up with a random person.
+* Ability to edit personal user information (excluding password).
+* Ability to log out.
