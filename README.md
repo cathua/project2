@@ -65,3 +65,9 @@ Using `supertest` and `supertest-session`, the tests are able to render secure p
 * The application does not check for duplicate usernames when the user changes their username in the `/users/edit` route.
 * The log-in and sign-up modal boxes do not close when the user clicks on another modal box.
 ..* i.e., when the user clicks log-in and then clicks sign-up, the log-in modal box does not close.
+
+## Overall Impressions
+
+> Overall, this project definitely challenged me in ways that I needed to be challenged. It encouraged me to continue working outside my comfort zone with a robust CRUD app, while still rooting me in my comfort zone of front-end development. While there are many things that I would love to continue improving, as of presentation day I am happy with what Ming and I have done and I'm glad we were able to create a cool and (hopefully!) meaningful MVP.
+
+> -Catherine
