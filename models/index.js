@@ -20,20 +20,25 @@ var db        = {};
 //   });
 // }
 
+// if (process.env.DATABASE_URL) {
+//   var sequelize = new Sequelize(process.env.DATABASE_URL, {
+//     dialect: 'postgres',
+//     protocol: 'postgres',
+//     use_env_variable: process.env.SESSION_SECRET,
+//     host: process.env.DATABASE_URL
+//   })
+// } else {
+//     var sequelize = new Sequelize(config.database, config.username, config.password, {
+//       host: "127.0.0.1",
+//       "use_env_variable": "SESSION_SECRET",
+//       "dialect": "postgres"
+//     });
+// }
+
 if (process.env.DATABASE_URL) {
-  var sequelize = new Sequelize(process.env.DATABASE_URL, {
-    dialect: 'postgres',
-    protocol: 'postgres',
-    use_env_variable: process.env.SESSION_SECRET,
-    host: process.env.DATABASE_URL
-  })
+  var sequelize = new Sequelize(process.env.DATABASE_URL,config);
 } else {
-    var sequelize = new Sequelize(config.database, config.username, config.password, {
-      "host": "127.0.0.1"
-      "use_env_variable": "SESSION_SECRET",
-      "use_env_variable": "DATABASE_URL",
-      "dialect": "postgres"
-    });
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
 fs
