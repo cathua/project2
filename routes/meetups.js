@@ -171,4 +171,24 @@ router.put('/:id', function(req, res) {
   })
 })
 
+router.delete('/', function(req, res) {
+  db.meetup.findById(req.body.meetup_id)
+  .then(meetup => {
+    meetup.destroy();
+  })
+  .then(() => {
+    db.userMeetup.findAll({
+      where: {meetup_id: req.body.meetup_id}
+    })
+    .then(userMeetups => {
+      userMeetups.forEach(userMeetup => {
+        userMeetup.destroy();
+      })
+    })
+    .then(() => {
+      res.redirect('/meetups');
+    })
+  })
+})
+
 module.exports = router;
