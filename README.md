@@ -41,6 +41,12 @@ The goals for each daily sprint were to render front-end views for the different
 
 To ensure that user data is protected, Coffee 4&#183;2 does not store any passwords in its user database. Instead, it stores hashed passwords, the passwords after they have been encrypted with a user-specific salt. These passwords are one-way encrypted so that there is no way to decrypt the user's entered password. Furthermore, in the login verificatin route, the user's input is put through the `strip()` and `trim()` methods in the Bcrypt package to ensure that the input was cleared of potentially malicious injections. After the user logs in, the user's session is stored and a middleware function, called `ensureLoggedIn`, is run every time a request is made so that the user can only see information that is specific to them. Upon the user logging out, that session information is deleted. Doing this ensures that malicious users are not able to hijack a user's session. The session key is also not included anywhere in the app's route. The session includes a `SESSION_SECRET`, and the entire app has disabled the Express header.
 
+## Wireframes
+
+As seen below, our initial wireframe includes a few additional views that we then refactored to make our application more streamlined, and to improve the user experience. We no longer have a `/requests` route as detailed in the lower left corner, and the layout of some of the pages is a little different. Aside from that, this wireframe (and its whiteboarded cousins, erased before their time) was crucioal in visualizing routes and ensuring that our app came together the way it was intended.
+
+![Coffee 4&#183;2 wireframe](https://github.com/cathua/project2/blob/master/Coffee42_Wireframe.jpg "Wireframe")
+
 ## Models & Associations
 
 Coffee 4&#183;2 utilizes three model, and one many-to-many association. The three models are `user`, `meetup`, and `coffeeshop`. The many-to-many association exists between `user` and `meetup`, as a single user has many meet-ups, and a single meet-up takes in two users. The model and its corresponding join table, `userMeetup`, is structured so that it can potentially take in more than two users, to facilitate group meet-ups. The entity-relationsip diagram is as follows.
