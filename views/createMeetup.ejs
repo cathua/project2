@@ -11,6 +11,10 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/users.css' />
 
+
+
+
+
   </head>
   <body>
     <div class="header-container">
@@ -19,7 +23,7 @@
           <h1 class="logo"><a class='header-link' href="/"><span>Coffee 4&#183;2</span> <i class="fa fa-coffee"></i></a></h1>
         </div>
         <div id="right">
-          <span class='nav-box center-align valign-wrapper' id="profile-link"><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button"><a class="profile" href="#">Meetups</a></button></span>
+          <span class='nav-box center-align valign-wrapper' id="profile-link"><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button"><a class="profile" href="/users">Profile</a></button></span>
           <span class='nav-box center-align valign-wrapper' id="logout"><button type="button" class="btn btn-info btn-lg z-depth-0 auth-button" data-toggle="modal" data-target="#myModal3">Log Out</button></span>
         </div>
       </header>
@@ -28,14 +32,13 @@
         <div id="myModal3" class="modal fade" role="dialog">
           <div class="modal-dialog">
 
-            <!-- Modal content -->
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">Log Out</h4>
               </div>
-              <form action='/logout' medthod='get'>
+              <form>
                 <div class="modal-body">
-                  Are you sure you want to log out? We're gonna miss you.
+                  Are you sure you want to log out?
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -48,36 +51,41 @@
           </div>
 
           <div class='content'>
-            <h1 class="title-header">Edit Your Profile</h1>
+            <h1 class="title-header">Create Your Meetup</h1>
             <div class='content-1'>
-              <h2 class="main-label">Let's Change Things Up.</h2>
+              <h2 class="main-label">Choose the time and location of your meetup. We'll match you up with a person automatically!</h2>
               <div class="row">
-                <form action="/users/edit?_method=PUT" method="post">
+                <form action="/meetups" method="post">
                   <div class="col s12">
-                    Your first name is
+                    <br />
+                    Set this meetup for
                     <div class="input-field inline">
-                      <input name='f_name' id="first-name" type="text" class="validate" value="<%= user.f_name %>">
+                      <input name='date' id="date" type="text" class="datepicker" placeholder="Date">
                     </div>
-                    . Your last name is
+                    at
                     <div class="input-field inline">
-                      <input name='l_name' id="last-name" type="text" class="validate" value="<%= user.l_name %>">
+                      <input name='time' id="time" type="text" class="timepicker" placeholder="Time">
                     </div>
-                    . Your current username is
+                    at
                     <div class="input-field inline">
-                      <input name='username' id="username" type="text" class="validate" value="<%= user.username %>">
+                    <select name='name' id='name'>
+                      <option value="" disabled selected>Coffeeshop:</option>
+                      <% coffeeshops.forEach(function(coffeeshop) { %>
+                          <option value='<%= coffeeshop.name %>'><%= coffeeshop.name %></option>
+                      <% }) %>
+                    </select>
                     </div>
-                    , with a password only you should know.
+                    .
                   </div>
                   <input type="submit" class="btn btn-info btn-lg z-depth-0 conf-button" value="Confirm Changes">
-                  <a href='/users'><button type="button" class="btn btn-info btn-lg z-depth-0 conf-button">Cancel</button></a>
+                  <a href='/meetups'><button type="button" class="btn btn-info btn-lg z-depth-0 conf-button">Cancel</button></a>
                 </form>
                 </div>
               </div>
             </div>
-
             <script src="//code.jquery.com/jquery.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
             <script type="text/javascript" src="/js/main.js"></script>
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       </body>
 </html>
