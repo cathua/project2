@@ -6,11 +6,10 @@
   margin: 0 auto;
 }
 
-/*.edit-link{
-  background-color: inherit;
-  color: white;
-}*/
-
 .card-action {
   color: white;
+}
+
+.edit-link {
+  color: white !important;
 }
