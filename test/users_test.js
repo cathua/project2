@@ -78,20 +78,24 @@ describe('GET /meetups', function() {
     });
 
   it('should get /meetups/edit', function(done) {
-    before(function (done) {
-    // logging in as @testingsuite'
-        testSession.post('/login')
-            .set('Accept', 'application/json')
-            .send({ username: 'huawkward', password: 'test' })
-            .then(function())
-            .end(function (error, response) {
-                expect(302);
-
-                done()
-            })
-    });
+    var testuser;
+    before(function(done) {
+      testSession.post('/login')
+      .set('Accept', 'application/json')
+      .send({ username: 'huawkward', password: 'test' })
+      .end(function(meetup) {
+        testuser = req.session.user;
+        expect(302);
+        done();
+        });
+      });
+    testSession.get('/meetups/:id/edit')
+    .end(function(meetup) {
+      expect(302);
+      done();
+    })
+  })
   });
-});
 
 // describe('GET /meetups/edit')
 
