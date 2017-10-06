@@ -24,6 +24,12 @@ describe('GET authentication errors', function() {
     .expect(200, done);
   });
 
+  it('accessing restricted page returns 302 response (redirected to main page)', function(done) {
+    api.get('/meetups')
+    .set('accept', 'application/json')
+    .expect(302, done);
+  })
+
   // it('accessing through incorrect login returns 200 response', function(done) {
   //   api.post
   // })
