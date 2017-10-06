@@ -126,7 +126,6 @@ router.post('/', function(req, res) {
     })
   })
 })
-// use case: you say you are free for coffee. the post route creates a new meetup for you.
 
 /* UPDATE meetup to be confirmed. */
 router.put('/accept', function(req, res) {

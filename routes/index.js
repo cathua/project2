@@ -19,7 +19,7 @@ const ensureLoggedIn = (req, res, next) => {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.status(200).render('index');
 });
 
 /* GET logout */
@@ -62,12 +62,12 @@ router.post('/signup', function(req, res){
 
 /* GET error page when you mess up the login */
 router.get('/index_login_error', function(req, res) {
-  res.render('index_login_error');
+  res.status(200).render('index_login_error');
 })
 
 /* GET error page when you have duplicate usernames */
 router.get('/index_signup_error', function(req, res) {
-  res.render('index_signup_error');
+  res.status(200).render('index_signup_error');
 })
 
 
@@ -86,7 +86,7 @@ router.post('/login', function(req,res) {
   })
   .then(user => {
     if (!user) {
-      res.render('/index_login_error');
+      res.status(200).render('/index_login_error');
     }
     let salt = user.salt;
     let verify = bcrypt.compareSync(password, user.hashed_password); // return T or F
