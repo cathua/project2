@@ -29,6 +29,7 @@
     "sequelize": "^4.13.2",
     "serve-favicon": "~2.4.2",
     "striptags": "^3.1.0",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "supertest-session": "^3.1.0"
   }
 }
