@@ -127,49 +127,46 @@ router.post('/', function(req, res) {
   })
 })
 
-/* PUT meetup by id */
-// router.put('/:id', function(req, res) {
-  // console.log("puttest");
-  // var c_id;
-  // db.coffeeshop.find({
-  //   where: {name: req.body.name}
-  // })
-  // .then(coffeeshop => {
-  //   c_id = coffeeshop.id;
-  //   console.log('coffeeshop_id', c_id);
-  // })
-  // .then(() => {
-  //   db.meetup.findById(req.params.id, {
-  //     attributes: ['id', 'accepted', 'coffeeshop_id', 'datetime']
-  //   })
-  //   .then(function(meetup) {
-  //     meetup.updateAttributes({
-  //       accepted: false,
-  //       coffeeshop_id: c_id,
-  //       datetime: req.body.date + " " + req.body.time
-  //     })
-  //     .then(function(meetup) {
-  //       console.log(meetup);
-  //       res.redirect('/meetups');
-  //     })
-  //   })
-  // })
-// })
-
 /* UPDATE meetup to be confirmed. */
 router.put('/accept', function(req, res) {
-  console.log('i did a thing');
-  console.log('req.body', req.body);
   db.meetup.findById(req.body.meetup_id, {
     attributes: ['id', 'accepted']
   })
-  .then(function(meetup) {
+  .then(meetup => {
     meetup.updateAttributes({
-      accepted:true,
+      accepted: true
+    })
+    .then(() => {
+      res.redirect('/meetups');
+    })
+  })
+})
+
+/* PUT meetup by id */
+router.put('/:id', function(req, res) {
+  console.log("puttest");
+  var c_id;
+  db.coffeeshop.find({
+    where: {name: req.body.name}
+  })
+  .then(coffeeshop => {
+    c_id = coffeeshop.id;
+    console.log('coffeeshop_id', c_id);
+  })
+  .then(() => {
+    db.meetup.findById(req.params.id, {
+      attributes: ['id', 'accepted', 'coffeeshop_id', 'datetime']
     })
     .then(function(meetup) {
-      console.log(meetup);
-      res.redirect('/meetups');
+      meetup.updateAttributes({
+        accepted: false,
+        coffeeshop_id: c_id,
+        datetime: req.body.date + " " + req.body.time
+      })
+      .then(function(meetup) {
+        console.log(meetup);
+        res.redirect('/meetups');
+      })
     })
   })
 })
