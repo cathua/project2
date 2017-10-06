@@ -7,7 +7,6 @@ var Promise = require('bluebird');
 
 const ensureLoggedIn = (req, res, next) => {
   if (!req.session || !req.session.user) {
-    console.log('req.session: ', req.session);
     res.redirect('/');
   } else {
     next();
@@ -81,7 +80,6 @@ router.get('/:id/edit', function (req, res) {
     return Promise.all(Promises);
   })
   .then(function(meetup) {
-    console.log(meetup);
     res.render('editMeetups', {meetup: meetup[0], coffeeshops: meetup[0].coffeeshops});
   })
 })
@@ -144,14 +142,12 @@ router.put('/accept', function(req, res) {
 
 /* PUT meetup by id */
 router.put('/:id', function(req, res) {
-  console.log("puttest");
   var c_id;
   db.coffeeshop.find({
     where: {name: req.body.name}
   })
   .then(coffeeshop => {
     c_id = coffeeshop.id;
-    console.log('coffeeshop_id', c_id);
   })
   .then(() => {
     db.meetup.findById(req.params.id, {
@@ -164,7 +160,6 @@ router.put('/:id', function(req, res) {
         datetime: req.body.date + " " + req.body.time
       })
       .then(function(meetup) {
-        console.log(meetup);
         res.redirect('/meetups');
       })
     })
