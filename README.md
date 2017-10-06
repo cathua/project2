@@ -18,12 +18,22 @@ The goals for each daily sprint were to render front-end views for the different
 
 ## Features
 
+# Current features
 * Account creation.
 * Login verification.
 * Error messages for duplicate usernames (no duplicate usernames).
 * Error messages for incorrect username/password combinations.
 * Ability to see all pending and upcoming meetups upon login.
 * Ability to edit their meet-ups.
+* Ability to delete/cancel meet-ups.
 * Ability to create a new meet-up with a random person.
 * Ability to edit personal user information (excluding password).
 * Ability to log out.
+
+# Future features
+* User can change their password.
+* User can select from a greater variety of locations (using the Yelp API to access more coffeeshops).
+
+## Application Security
+
+To ensure that user data is protected, Coffee 4&#183;2 does not store any passwords in its user database. Instead, it stores hashed passwords, the passwords after they have been encrypted with a user-specific salt. These passwords are one-way encrypted so that there is no way to decrypt the user's entered password. Furthermore, in the login verificatin route, the user's input is put through the `strip()` and `trim()` methods in the Bcrypt package to ensure that the input was cleared of potentially malicious injections. After the user logs in, the user's session is stored and a middleware function, called `ensureLoggedIn`, is run every time a request is made so that the user can only see information that is specific to them. Upon the user logging out, that session information is deleted. Doing this ensures that malicious users are not able to hijack a user's session. The session key is also not included anywhere in the app's route.
