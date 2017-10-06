@@ -16,6 +16,7 @@ The goals for each daily sprint were to render front-end views for the different
 ### Relevant Links
 
 [Trello Board](https://trello.com/b/6A38AkBR/coffee42)
+
 [Deployed Link](http://coffee42.herokuapp.com)
 
 ## Features
