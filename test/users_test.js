@@ -97,17 +97,4 @@ describe('GET /meetups', function() {
   })
   });
 
-// describe('GET /meetups/edit')
-
-
-// before(function (done) {
-// // logging in as @testingsuite'
-//     testSession.post('/login')
-//         .set('Accept', 'application/json')
-//         .send(newUser)
-//         .end(function (error, response) {
-//             expect(302);
-//
-//             done()
-//         })
-// });
+// the /meetups/:id/edit route is broken

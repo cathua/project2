@@ -144,3 +144,7 @@ li {
 .conf-button:hover{
   background-color: #EC7505;
 }
+
+btn:visited {
+  background-color: #EC7505 !important
+}
