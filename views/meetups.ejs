@@ -103,7 +103,7 @@
                     </div>
                     <div class="card-action">
                       <a class='edit-link' href="/meetups/<%= meetup.id %>/edit">Edit</a>
-                      <form action='/meetups' method="PUT">
+                      <form action='/meetups/accept?_method=PUT' method="post">
                         <input type="hidden" name="meetup_id" value="<%=meetup.id%>"/>
                         <button type="submit" class='edit-link'>Accept</button>
                       </form>
