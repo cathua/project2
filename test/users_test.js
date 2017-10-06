@@ -3,10 +3,14 @@ var should    = require("chai").should(),
     supertest = require("supertest"),
     api       = supertest("http://localhost:3000");
     session = require('supertest-session');
+    app = require('../app');
+    testSession = null;
 
-    beforeEach(function () {
-      testSession = session(api);
-    });
+
+beforeEach(function () {
+  testSession = session(app);
+
+})
 
 
 describe('GET /', function() {
@@ -43,4 +47,18 @@ describe('GET authentication errors', function() {
   //     password: 'coffee42'
   //   })
   // })
+})
+
+describe('POST login', function() {
+  it('should return a 302 when you log in incorrectly', function(done) {
+    testSession.post('/login')
+      .send({ username: 'huawkward', password: 'wrong' })
+      .expect(302, done);
+  });
+
+  it('should log in', function(done) {
+    testSession.post('/login')
+      .send({ username: 'huawkward', password: 'test' })
+      .expect(302, done);
+  })
 })
