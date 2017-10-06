@@ -48,7 +48,7 @@ app.use((req, res, next) => {
     const uid = req.session.user.id;
 
     db.user.findById(uid, {
-      attributes: ['id', 'first_name', 'last_name', 'display_name']
+      attributes: ['id', 'f_name', 'l_name', 'username']
     })
       .then(user => {
         res.locals.user = user;
